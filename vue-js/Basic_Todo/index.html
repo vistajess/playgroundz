@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VUE JS</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+<div class="container">
+	<div id="tasks">
+		<div v-show="remaining.length">
+			<h1>Tasks ({{ remaining.length }})</h1>
+			<ol class="list-group">
+				<li v-for="task in tasks | inProcess"
+						class="list-group-item"> 
+					<span v-on:dblclick="editTask(task)">{{ task.body }}</span>
+					<!-- You can pass index of each item to the `removeTask($index)` -->
+					<button class="" v-on:click="removeTask(task)">x</button>
+					<button v-on:click="toggleTaskCompletion(task)">&#10004</button>
+				</li>
+			</ol>
+		</div>
+		<form v-on:submit="addTask">
+			<div class="form-group">
+				<input class="form-control" 
+							placeholder="I need to..." 
+							v-el="newTaskInput"
+							v-model="newTask">
+			</div>
+				<button class="btn btn-primary">Add Task</button>
+				<button v-on:click="completeAll" 
+								class="btn btn-default">
+					Mark All as Completed?
+				</button>
+		</form>
+
+		<div  class="form-group" v-if="completions.length">
+			<h2>Completed Tasks ({{ completions.length }})</h2>
+			<ol class="list-group">
+				<li v-for="task in tasks | filterBy true in 'completed'"
+						class="list-group-item"> 
+					<span>{{ task.body }}</span>
+					<button class="" v-on:click="toggleTaskCompletion(task)">x</button>
+				</li>
+			</ol>
+			<button class="btn btn-danger" v-on:click="clearComputed">Clear Completed</button>
+		</div>
+		<!-- print out the `data` object using $data -->
+		<pre>{{ $data | json }}</pre>
+	</div>
+</div>
+<script type="text/javascript" src="dist/script.js"></script>
+</body>
+</html>

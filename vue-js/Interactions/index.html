@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VUE JS Basic Interactions</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div id="posts" class="list-group" v-show="isVisible">
+		  <div class="list-group-item active">
+		    <h4 class="list-group-item-heading">List group item heading</h4>
+		    <p class="list-group-item-text col-md-8">
+		    Tooltips & popovers in button groups require special setting
+				When using tooltips or popovers on elements within a .btn-group, you'll have to specify the option container: 'body' to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).
+		    </p>
+		    <button class="btn btn-default pull-right" 
+		    				v-on:click="isVisible = false">x</button>
+		    <br><br>
+		    <div class="btn btn-default like-btn"
+		    				v-bind:class="{ '-active': liked }"
+		    				v-on:click="liked = !liked">
+		    		<i class="glyphicon glyphicon-thumbs-up"></i>
+		    </div>
+		    <br><br>
+		    <pre>{{ $data | json}}</pre>
+		  </div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.11/vue.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
