@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VUE JS Basic Interactions</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div id="demo" class="list-group">
+			<script id="coupon-template" type="x-template">
+				<input type="text" v-model="coupon" v-on:blur="whenCouponHasBeenEntered">
+				<div v-text="text"></div>
+				<pre>{{ $data | json }}</pre>
+			</script>
+		  <coupon></coupon>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.11/vue.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
