@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VUE JS Basic Interactions</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+<div class="container">
+	<div id="demo" class="row">
+	<h2>Filtering and Ordering</h2>
+	<input type="text" 
+				class="form-control"
+				v-model="search">
+		<table  class="table table-striped">
+			<thead>
+				<tr>
+					<th v-for="column in columns">
+						<a  href="#" 
+									v-on:click="sortBy(column)"
+									v-bind:class="{ '-active': sortKey === column }">{{ column | capitalize }}</a>
+					</th>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+			<!-- `orderBy` for ordering the list -->
+				<tr v-for="person in people | orderBy sortKey order | filterBy search in 'name'">
+					<td>{{ person.name }}</td>
+					<td>{{ person.age }}</td>
+				</tr>
+			</tbody>
+		</table> 
+	</div>
+
+	<hr>
+	<div id="customFilters" class="row">
+		<h2>Examples of Custom Filters</h2>
+		<!-- from the `reverse` function:
+				```reverse: function(value, wordsOnly)```
+				`value` is the element you want to apply (`message`)
+				`wordsOnly` is the second parameter
+		 -->
+		<h4>{{ message | reverse 'wordsOnly' }}</h4>
+	</div>
+	<div id="customFilters2" class="row">
+		<h4>{{ message | reverse }}</h4>
+	</div>
+	<div id="customFilters3" class="row">
+		<div class="radio">
+			<label>
+				<input class="" type="radio" name="gender" v-model="gender" value="all"> All
+			</label>
+		</div>
+		<div class="radio">
+		<label>
+			<input class="" type="radio" name="gender" v-model="gender" value="male"> Male
+		</label>
+	</div>
+	<div class="radio">
+		<label>
+			<input class="" type="radio" name="gender" v-model="gender" value="female"> Female
+		</label>
+	</div>
+		<ul>
+			<li v-for="person in people | gender"> {{ person.name }}: {{ person.gender }}</li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.11/vue.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
