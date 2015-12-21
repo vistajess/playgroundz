@@ -14,8 +14,10 @@
 				<div v-text="text"></div>
 				<pre>{{ $data | json }}</pre>
 			</script>
-		  <coupon></coupon>
+			<h2 v-show="coupon">You entered the coupon code: {{ coupon }}</h2>
+		  <coupon v-bind:applied="setCoupon"></coupon>
 		</div>
+		<hr>
 	</div>
 </div>
 

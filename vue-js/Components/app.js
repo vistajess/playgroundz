@@ -1,13 +1,16 @@
 Vue.component('coupon', {
-  template: document.querySelector('#coupon-template'),
+  template: '#coupon-template',
+
+  props: ['applied'],
 
   data: function() {
     return {
-      coupon: "FOOBAR",
+      coupon: '',
       invalid: false,
       text: ''
     } 
   },
+
 
   methods: {
     whenCouponHasBeenEntered: function() {
@@ -16,6 +19,8 @@ Vue.component('coupon', {
 
     validate: function() {
       if( this.coupon == 'FOOBAR') {
+        console.log(this);
+        this.applied(this.coupon);
         return this.text = '20% OFF!!';
       }
 
@@ -25,5 +30,12 @@ Vue.component('coupon', {
 });
 
 new Vue({
-  el: '#demo'
+  el: '#demo',
+
+  methods: {
+    setCoupon: function(coupon) {
+      this.$set('coupon', coupon);
+    }
+  }
 });
+
