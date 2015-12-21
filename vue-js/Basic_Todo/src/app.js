@@ -5,7 +5,7 @@ new Vue({
   data: {
     tasks: [
       { 
-      	body: 'Learn JavaScript', 
+      	body: 'Learn JavaScriptsdasdasd', 
       	completed: false 
       }
     ],
@@ -15,7 +15,10 @@ new Vue({
   filters: {
   	inProcess: function(tasks) {
   		return tasks.filter(task => !task.completed);
-  	}
+  	},
+    reverseString: function(val) {
+      return val.split('').reverse().join('');
+    }
   },
 
   computed: {
