@@ -56,7 +56,7 @@
 	  el: '#tasks',
 	  data: {
 	    tasks: [{
-	      body: 'Learn JavaScript',
+	      body: 'Learn JavaScriptsdasdasd',
 	      completed: false
 	    }],
 	    newTask: ''
@@ -67,6 +67,9 @@
 	      return tasks.filter(function (task) {
 	        return !task.completed;
 	      });
+	    },
+	    reverseString: function reverseString(val) {
+	      return val.split('').reverse().join('');
 	    }
 	  },
 

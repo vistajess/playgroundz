@@ -20,8 +20,8 @@
 		    <br><br>
 		    <div class="btn btn-default like-btn"
 		    				v-bind:class="{ '-active': liked }"
-		    				v-on:click="liked = !liked">
-		    		<i class="glyphicon glyphicon-thumbs-up"></i>
+		    				v-on:click="toggleLike">
+		    		<i class="glyphicon glyphicon-thumbs-up"></i>{{ likesCount }}
 		    </div>
 		    <br><br>
 		    <pre>{{ $data | json}}</pre>
