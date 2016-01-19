@@ -20,21 +20,21 @@
       return null;
     } else {
     var search = '<div id="search_datatable" class="dataTables_filter"> \
-                    <label>Search:<input id="search_api" type="search" class="" placeholder="" aria-controls="dataTableProducts"></label> \
-                    <button class="btn btn-default" >Search by Name</button> \
+                    <label>Search:<input id="input_search" type="search" class="" placeholder="" value="" aria-controls="dataTableProducts"></label> \
+                    <button id="search_btn" class="btn btn-default" >Search by Name</button> \
                   </div>';
     $('#dataTableProducts_wrapper:first-child').prepend(search);
     }
   }
 
-  var handleProducts = function(api,userid,access_token,pageNum,filter) {
+  var handleProducts = function(api,userid,access_token,pageNum,searchString) {
     var table = $('#dataTableProducts').DataTable({
       /*
         FOR REFACTORING 
       */
       "ajax": function (data, callback, settings) {
-        $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum)
-        // $.get("http://v2.api.onesupershop.com/stores/latestgadget/products?page"+pageNum)
+        // $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum)
+        $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum + "&filters={\"name\": \"" + searchString  + "\" }")
           .success(function(res) {
             callback({
               data: res.data.filter(function(data) { return data })
@@ -104,7 +104,7 @@
 
   table.on('draw', function() {
     // renderRefreshButton();
-    renderSearch();
+    // renderSearch();
 
     $('#refresh_table_btn').click(function(){
       $this = $(this);
@@ -137,8 +137,8 @@
   });
   }
   return {
-    init: function(api,userid,access_token,pageNum,total) {
-      handleProducts(api,userid,access_token,pageNum,total);
+    init: function(api,userid,access_token,pageNum,searchString) {
+      handleProducts(api,userid,access_token,pageNum,searchString);
     }
   }
 
