@@ -5,35 +5,101 @@
   <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+<style type="text/css">
+  .the-legend {
+    border-style: none;
+    border-width: 0;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+  }
+  .the-fieldset {
+      border: 2px groove threedface #444;
+      -webkit-box-shadow:  0px 0px 0px 0px #000;
+              box-shadow:  0px 0px 0px 0px #000;
+      margin-top: 100px;
+  }
+  #dataTableProducts .sorting {
+    background-image: url("http://cdn.datatables.net/1.10.10/images/sort_both.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
 
+  #dataTableProducts .sorting_desc {
+    background-image: url("http://cdn.datatables.net/1.10.10/images/sort_desc.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
+
+  #dataTableProducts .sorting_asc {
+    background-image: url("http://cdn.datatables.net/1.10.10/images/sort_asc.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
+</style>
 </head>
 <body>
 <div class="container">
-  <div class="pagination">
-    
-  </div>
-      <table class="table table-striped table-bordered table-hover" id="dataTableProducts">
-      <div id="search_datatable" class="dataTables_filter"> 
-        <label>Search:<input id="input_search" type="search" class="" placeholder="" value="" aria-controls="dataTableProducts"></label> 
-        <button id="search_btn" class="btn btn-default" >Search by Name</button> 
-      </div>
-      <thead>
-        <tr role="row" class="heading">
-          <th width="10%" class="hidden-xs"> ID </th>
-          <th width="15%"> Product&nbsp;Name </th>
-          <th width="15%"> Featured Image </th>
-          <th width="10%" class="hidden-xs"> Price </th>
-          <th width="10%" class="hidden-xs"> Quantity </th>
-          <th width="10%" class="hidden-xs"> Status </th>
-          <th width="10%" class="hidden-xs"> Actions </th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-      </table>
+  <div class="col-md-3" >
+   <fieldset class="well the-fieldset">
+     <legend class="the-legend">Filters:</legend>
+     <label>Search:</label>
+     <input id="input_search" type="search" class="form-control" placeholder="" value="" aria-controls="dataTableProducts"> 
+      <label>Sort By</label>
+<!--       <select id="select_sortby" class="form-control">
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+        <option value="selling_price">Selling Price</option>
+      </select>
 
-   <div class="pagination">
+      <label>Order By</label>
+      <select id="select_orderby" class="form-control">
+        <option value="">Ascending</option>
+        <option value="-">Descending</option>
+      </select> -->
+      <label>By Status </label>
+      <select id="select_status" class="form-control">
+        <option value="">All Products</option>
+        <option value="1">Active Products</option>
+        <option value="0">Inactive Products</option>
+      </select>
+      <div class="">
+        <div class="">
+          <label>Per Page</label>
+          <select id="select_limit" class="form-control">
+            <option value="15">15</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          <button id="filter_btn" class="btn btn-default" >Filter</button> 
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-md-9">
+    <div class="pagination">
     
-   </div>
+    </div>
+        <table class="table table-striped table-bordered table-hover" id="dataTableProducts">
+        <thead>
+          <tr role="row" class="heading">
+            <th id="th_id" data-sort="id" width="10%" class="hidden-xs sorting sorting_desc"> ID </th>
+            <th id="th_name" data-sort="name" width="15%" class="sorting"> Product&nbsp;Name </th>
+            <th width="15%"> Featured Image </th>
+            <th id="th_price" data-sort="selling_price" width="10%" class="hidden-xs sorting"> Price </th>
+            <th width="10%" class="hidden-xs"> Quantity </th>
+            <th width="10%" class="hidden-xs"> Status </th>
+            <th width="10%" class="hidden-xs"> Actions </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+
+     <div class="pagination">
+      
+     </div>
+
+  </div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
 <script type="text/javascript" src="js/jquery.simplePagination.js"></script>

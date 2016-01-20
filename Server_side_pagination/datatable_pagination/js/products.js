@@ -27,14 +27,15 @@
     }
   }
 
-  var handleProducts = function(api,userid,access_token,pageNum,searchString) {
+  var handleProducts = function(api,userid,access_token,pageNum,searchString,limitNumber,sort_string,status_string) {
+    console.log('handleProducts',limitNumber)
     var table = $('#dataTableProducts').DataTable({
       /*
         FOR REFACTORING 
       */
       "ajax": function (data, callback, settings) {
         // $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum)
-        $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum + "&filters={\"name\": \"" + searchString  + "\" }")
+        $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum + "&filters={\"name\": \"" + searchString  + "\" "+status_string+"}&limit="+limitNumber+sort_string)
           .success(function(res) {
             callback({
               data: res.data.filter(function(data) { return data })
@@ -98,14 +99,17 @@
         //   [15, 20, 50, 100, 150]
         // ],
         "bPaginate": false,
-        "bFilter" : false,               
+        "bFilter" : false,       
+        "bSort" : false,        
         "order": [[0, 'desc']]
       });
 
   table.on('draw', function() {
     // renderRefreshButton();
     // renderSearch();
-
+    $('#th_id').addClass('sorting');
+    $('#th_name').addClass('sorting');
+    $('#th_price').addClass('sorting');
     $('#refresh_table_btn').click(function(){
       $this = $(this);
       $this.addClass('disabled').html('<span class="fa fa-spin fa-spinner"></span> Loading');
@@ -137,8 +141,9 @@
   });
   }
   return {
-    init: function(api,userid,access_token,pageNum,searchString) {
-      handleProducts(api,userid,access_token,pageNum,searchString);
+    init: function(api, userid, access_token, pageNum, searchString, limitNumber, sort_string, status_string) {
+      console.log('init',limitNumber)
+      handleProducts(api, userid, access_token, pageNum, searchString, limitNumber,sort_string,status_string);
     }
   }
 
