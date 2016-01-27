@@ -1,19 +1,6 @@
 
   var Products = function() {
 
-  var renderRefreshButton = function() {
-    if( $('#refresh_table_btn').size() ) {
-      return null;
-    } else {
-    var refresh_button = '<button type="button" \
-                          class="btn btn-success pull-right" \
-                          id="refresh_table_btn"> \
-                          <i class="fa fa-refresh"></i>\
-                          Refresh Table \
-                          </button>';
-    $('#dataTableProducts_filter').append(refresh_button);
-    };
-  }
 
   var renderSearch = function() {
     if( $('#search_datatable').size() ) {
@@ -28,7 +15,6 @@
   }
 
   var handleProducts = function(api,userid,access_token,pageNum,searchString,limitNumber,sort_string,status_string) {
-    console.log('handleProducts',limitNumber)
     var table = $('#dataTableProducts').DataTable({
       /*
         FOR REFACTORING 
@@ -37,6 +23,8 @@
         // $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum)
         $.get(api + "/me/products?access_token=" + access_token + "&page=" + pageNum + "&filters={\"name\": \"" + searchString  + "\" "+status_string+"}&limit="+limitNumber+sort_string)
           .success(function(res) {
+            console.log(res)
+            $('#msg_results').html('Found ' + res.total + ' results').css('display','inline-block');
             callback({
               data: res.data.filter(function(data) { return data })
             });
@@ -105,8 +93,6 @@
       });
 
   table.on('draw', function() {
-    // renderRefreshButton();
-    // renderSearch();
     $('#th_id').addClass('sorting');
     $('#th_name').addClass('sorting');
     $('#th_price').addClass('sorting');

@@ -1,0 +1,17 @@
+.product-item {
+	width: 280px;
+  height: 350px;
+  border: 1px solid rgba(128, 128, 128, 0.41);
+  padding: 15px;
+  margin: 10px 5px;
+  display: inline-block
+}
+
+.product-item h3 { 
+	font-size: 18px;
+}
+
+.product-image {
+	height: 150px;
+	width: 150px;
+}

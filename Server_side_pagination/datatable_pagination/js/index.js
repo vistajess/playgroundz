@@ -2,7 +2,7 @@
 
   var api_v2 = "http://10.10.2.23:5000";
   var api_v2 = "http://v2.api.onesupershop.com";
-  var access_token = "98JNzFYdjdKGtcPVkqTBUAMpQkPNewIYQ1kVOsaP";
+  var access_token = "gxsMsGoE4M3ruvdfa5MnjYhiuckyqEXQIBlwqGzJ";
   var total = 0;
   var per_page = 0;
   var userid = 12815;
@@ -55,7 +55,7 @@ $('#filter_btn').click(function() {
   ProductDataTable(txt,limitNumber,sort_string,status_string);
 });
 
-  $('.sorting').click(function() {
+  $('.sort').click(function() {
     var sort_string = '';
     var txt = $('#input_search').val();
     var sort = $('#select_sortby').val();
@@ -71,20 +71,20 @@ $('#filter_btn').click(function() {
     console.log($_this.data('sort'))
     if($_this.hasClass('sorting_asc')) {
       sort_string = "&sort=-"+data_sort;
-      $('.sorting').removeClass('sorting_asc');
-      $('.sorting').removeClass('sorting_desc');
+      $('.sort').removeClass('sorting_asc');
+      $('.sort').removeClass('sorting_desc');
       $_this.removeClass('sorting_asc');
       $_this.addClass('sorting_desc');
     } else if ($_this.hasClass('sorting_desc')) {
       sort_string = "&sort="+data_sort;
-      $('.sorting').removeClass('sorting_asc');
-      $('.sorting').removeClass('sorting_desc');
+      $('.sort').removeClass('sorting_asc');
+      $('.sort').removeClass('sorting_desc');
       $_this.removeClass('sorting_desc');
       $_this.addClass('sorting_asc'); 
     } else if ($_this.not('.sorting_desc') && $_this.not('.sorting_asc')) {
       sort_string = "&sort=-"+data_sort;
-      $('.sorting').removeClass('sorting_asc');
-      $('.sorting').removeClass('sorting_desc');
+      $('.sort').removeClass('sorting_asc');
+      $('.sort').removeClass('sorting_desc');
       $_this.addClass('sorting_desc');
     }
     mytable.dataTable().fnDestroy();
