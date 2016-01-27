@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ProductEmpty extends React.Component {
+export default class ProductLoading extends React.Component {
   render() {
     return <div>LOADING PRODUCTS</div>
   }

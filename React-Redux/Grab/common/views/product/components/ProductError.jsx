@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default class ProductEmpty extends React.Component {
+export default class ProductError extends React.Component {
   render() {
-    return <div>ERROR LOADING PRODUCTS</div>
+    return <div><b>ERROR IN LOADING THE PRODUCTS</b></div>
   }
 }
