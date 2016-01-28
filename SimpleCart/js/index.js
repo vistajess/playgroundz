@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	renderItems();
+	renderItems(products);
 
 	$('body').on('click', '.add-cart', function () {
 		var product_id = $(this).data('id');
@@ -10,6 +10,22 @@ $(document).ready(function() {
     var product_id = $(this).data('id');
     var qty = $(this).data('qty');
     removeItem(product_id,parseInt(qty));
+  });
+
+  $('#search_btn').click(function (){
+      var item_name = $('#search_item').val();
+      searchItem(item_name);
+  });
+
+  $('#show_all').click(function (){
+     $('#search_item').val('');
+      renderItems(products);
+  });
+
+  $('#sort_items').change(function() {
+    var sortBy = $('#sort_items option:selected').val();
+    var sortedProducts = products.sort(sortItems(sortBy));
+    renderItems(sortedProducts);
   });
 
 });
@@ -69,7 +85,6 @@ var products = [
         ];
 
   var cartItems = [];
-  var cartTotal = 0;
 
 // ========================== FUNCTIONS 
 function addToCart(product_id) {
@@ -99,7 +114,23 @@ function addToCart(product_id) {
   //update the cart
   renderCartItems(item_qty);
   //update the product list
-  renderItems();
+  renderItems(products);
+};
+
+function searchItem(string) {
+    $('#product-container').html('');
+    //searching item from the  product list
+    var searchItems = products.filter(function(product,index) { 
+      var cleanString = new RegExp(string, 'i');
+      var result = product.name.match(cleanString);
+      return result;
+    });
+    if(searchItems.length) {
+      // show filtered item by search
+      renderItems(searchItems);
+    } else {
+      $('#product-container').append('No Items Found');
+    }
 }
 
 
@@ -111,13 +142,15 @@ function removeItem(product_id,qty) {
   !item.length ? products.push(findItemInCart[0]) : item[0].quantity = item[0].quantity + qty;
 
   cartItems = removeItemInCart;
-  renderItems();
+  //update the products
+  renderItems(products);
+  //update the cart
   renderCartItems();
 }
 
-function renderItems() {
+function renderItems(array) {
 	  $('#product-container').html('');
-	  products.map(function(product, index) {
+	  array.map(function(product, index) {
     var item = '<div class="item-container col-md-6"> \
                   <div class="product-item col-md-12 text-center"> \
     							<img class="img-responsive center-block product-image" src='+product.image_path+' > \
@@ -143,7 +176,7 @@ function renderCartItems() {
                     <h5>P '+ item.price+'.00</h5> \
                   </div> \
                   <div class="col-md-2"> \
-                    <input type="text" class="qty" value='+ item.quantity +'> \
+                    <input type="text" disabled class="qty" value='+ item.quantity +'> \
                   </div> \
                   <div class="col-md-2"> \
                     <button class="btn btn-warning remove-cart" data-qty='+item.quantity+' data-id='+item.id+'>X</button> \
@@ -160,3 +193,15 @@ function renderCartItems() {
   var template = '<div class="total text-right col-md-12">TOTAL:P'+total+'.00</div>';
   $('#cart-container').append(template);
 };
+
+function sortItems(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
