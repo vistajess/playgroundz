@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
 	renderItems(products);
 
 	$('body').on('click', '.add-cart', function () {
@@ -28,61 +28,60 @@ $(document).ready(function() {
     renderItems(sortedProducts);
   });
 
-});
 
 //=============================== VARIABLES IN GLOBAL SCOPE 
 
 	// These are sample products and in your case may came from database or fetch through API
-var products = [
-				{
-            "id": 1,
-            "name": "Iphone 6",
-            "description": "Sample Description",
-            "price": 4000,
-            "quantity": 120,
-            "image_path":"images/prod1.jpg"
-        },
-        {
-            "id": 2,
-            "name": "Power Bank",
-            "description": "power bank of the whole world",
-            "price": 250,
-            "quantity": 230,
-            "image_path":"images/prod2.jpg"
-        },
-        {
-            "id": 3,
-            "name": "Bea Anne Cruz",
-            "description": "Confident.overload()",
-            "price": 4500,
-            "quantity": 15,
-            "image_path":"images/prod3.jpg"
-        },
-        {
-            "id": 4,
-            "name": "Laptop",
-            "description": "Matibay na laptop, kahit basain mababasa pa rin",
-            "price": 25000,
-            "quantity": 20,
-            "image_path":"images/prod4.jpg"
-        },
-        {
-            "id": 5,
-            "name": "Razer Mechanical Keyboard",
-            "description": "",
-            "price": 7500,
-            "quantity": 85,
-            "image_path":"images/prod5.jpg"
-        },
-        {
-            "id": 6,
-            "name": "Hokage Lvl 999",
-            "description": "",
-            "price": 1430,
-            "quantity": 40,
-            "image_path":"images/prod6.jpg"
-        }
-        ];
+// var products = [
+// 				{
+//             "id": 1,
+//             "name": "Iphone 6",
+//             "description": "Sample Description",
+//             "price": 4000,
+//             "quantity": 120,
+//             "image_path":"images/prod1.jpg"
+//         },
+//         {
+//             "id": 2,
+//             "name": "Power Bank",
+//             "description": "power bank of the whole world",
+//             "price": 250,
+//             "quantity": 230,
+//             "image_path":"images/prod2.jpg"
+//         },
+//         {
+//             "id": 3,
+//             "name": "Bea Anne Cruz",
+//             "description": "Confident.overload()",
+//             "price": 4500,
+//             "quantity": 15,
+//             "image_path":"images/prod3.jpg"
+//         },
+//         {
+//             "id": 4,
+//             "name": "Laptop",
+//             "description": "Matibay na laptop, kahit basain mababasa pa rin",
+//             "price": 25000,
+//             "quantity": 20,
+//             "image_path":"images/prod4.jpg"
+//         },
+//         {
+//             "id": 5,
+//             "name": "Razer Mechanical Keyboard",
+//             "description": "",
+//             "price": 7500,
+//             "quantity": 85,
+//             "image_path":"images/prod5.jpg"
+//         },
+//         {
+//             "id": 6,
+//             "name": "Hokage Lvl 999",
+//             "description": "",
+//             "price": 1430,
+//             "quantity": 40,
+//             "image_path":"images/prod6.jpg"
+//         }
+//         ];
 
   var cartItems = [];
 
