@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<categories>
+  <category>
+    <id>8</id>
+    <name>Category 1</name>
+    <details>Category Details 1        			</details>
+  </category>
+  <category>
+    <id>10</id>
+    <name>Shoes</name>
+    <details>Category for shoes    			</details>
+  </category>
+  <category>
+    <id>12</id>
+    <name>category 3</name>
+    <details>3 category    			</details>
+  </category>
+  <category>
+    <id>15</id>
+    <name>God</name>
+    <details>Save me    			</details>
+  </category>
+</categories>
