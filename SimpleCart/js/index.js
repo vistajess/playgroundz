@@ -84,6 +84,7 @@
 //         ];
 
   var cartItems = [];
+  var total = 0;
 
 // ========================== FUNCTIONS 
 function addToCart(product_id) {
@@ -114,6 +115,8 @@ function addToCart(product_id) {
   renderCartItems(item_qty);
   //update the product list
   renderItems(products);
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  $('.actions').show();
 };
 
 function searchItem(string) {
@@ -188,7 +191,7 @@ function renderCartItems() {
   });
 
   var getSubtotalsArray = cartItems.map(function(product,index) { return product.subtotal });
-  var total = getSubtotalsArray.reduce(function(a,b) { return a + b });
+  total = getSubtotalsArray.reduce(function(a,b) { return a + b });
   var template = '<div class="total text-right col-md-12">TOTAL:P'+total+'.00</div>';
   $('#cart-container').append(template);
 };
