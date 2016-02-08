@@ -1,4 +1,5 @@
 <?php
+
 /* Database connection end */
 $servername = "localhost";
 $username = "root";
@@ -45,8 +46,12 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["category_id"];
 	$nestedData[] = $row["category_name"];
 	$nestedData[] = $row["category_details"];
-	$nestedData[] = "<a href='modules/edit_category.php?id=".$row['category_id']."'>Edit</a>
-									<a href='modules/deleteCategory.php?id=".$row['category_id']."' onClick=\"javascript: return confirm('Please confirm deletion');\">Delete</a>";
+	// $nestedData[] = "<a href='modules/edit_category.php?id=".$row['category_id']."'>Edit</a>
+	$nestedData[] = "<a id='edit_category_modal' href='#editCategory' data-category_name='".$row["category_name"]."'
+									data-category_details='".$row["category_details"]."' 
+									data-category_id='".$row["category_id"]."'>Edit</a>
+									<a href='modules/deleteCategory.php?id=".$row['category_id']."' 
+									onClick=\"javascript: return confirm('Please confirm deletion');\">Delete</a>";
 	$data[] = $nestedData;
 }
 

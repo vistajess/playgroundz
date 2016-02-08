@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<products>
+  <product>
+    <id>2</id>
+    <name>Number 2</name>
+    <desciption>Number 2</desciption>
+    <quantity>Number 2</quantity>
+    <price>Number 2</price>
+    <product_image>Number 2</product_image>
+    <category>Number 2</category>
+  </product>
+</products>

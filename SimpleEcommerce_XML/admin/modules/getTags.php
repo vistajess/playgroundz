@@ -43,7 +43,8 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 
 	$nestedData[] = $row["tag_id"];
 	$nestedData[] = $row["tag_name"];
-	$nestedData[] = "<button>EDIT</button><button>DELETE</button>";
+	$nestedData[] = "<a id='edit_tag_modal' href='#editTag' data-tag_name='".$row["tag_name"]."' data-tag_id='".$row["tag_id"]."'>Edit</a>
+									<a href='modules/deleteTag.php?id=".$row['tag_id']."' onClick=\"javascript: return confirm('Do you want to delete this tag');\">Delete</a>";
 	
 	$data[] = $nestedData;
 }

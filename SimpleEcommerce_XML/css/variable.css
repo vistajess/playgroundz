@@ -1,3 +1,8 @@
 .-display {
 	display: block;
 }
+
+.wrapper {
+	width: 1200px;
+	margin:0 auto;
+}

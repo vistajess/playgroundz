@@ -16,7 +16,9 @@ $columns = array(
 	1 => 'product_name',
 	2 => 'product_image',
 	3 => 'description',
-	4 => 'actions',
+	4 => 'price',
+	5 => 'quantity',
+	6 => 'actions',
 );
 
 // getting total number records without any search
@@ -27,7 +29,7 @@ $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
-$sql = "SELECT product_id, product_name, description,product_image ";
+$sql = "SELECT * ";
 $sql.=" FROM tblproduct WHERE 1=1";
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.=" AND ( product_id LIKE '".$requestData['search']['value']."%' ";    
@@ -49,6 +51,8 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = $row["product_name"];
 	$nestedData[] = '<img src="../images/'.$row["product_image"].'">';
 	$nestedData[] = $row["description"];
+	$nestedData[] = $row["price"];
+	$nestedData[] = $row["quantity"];
 	$nestedData[] = "<a href='modules/editProduct.php?id=".$row['product_id']."'>Edit</a>
 									<a href='modules/deleteProduct.php?id=".$row['product_id']."' onClick=\"javascript: return confirm('Please confirm deletion');\">Delete</a>";
 	

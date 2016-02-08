@@ -9,7 +9,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']))
 $id = $_GET['id'];
 
 // delete record from database
-if ($stmt = $conn->prepare("DELETE FROM tblcategory WHERE category_id = ? LIMIT 1")) {
+if ($stmt = $conn->prepare("DELETE FROM tbltag WHERE tag_id = ? LIMIT 1")) {
 $stmt->bind_param("s",$id);
 $stmt->execute();
 $stmt->close();
@@ -19,18 +19,18 @@ $stmt->close();
 	$xml = new DOMDocument("1.0", "utf-8");
 	$xml->formatOutput = true;
 	$xml->preserveWhiteSpace = false;
-	$xml->Load('../../data/category.xml');
+	$xml->Load('../../data/tags.xml');
 
-	$root = $xml->getElementsByTagName('categories')->item(0);
-	$categories = $root->getElementsByTagName('category');	
+	$root = $xml->getElementsByTagName('tags')->item(0);
+	$tags = $root->getElementsByTagName('tag');	
 
-	foreach ($categories as $category) {
-		$current_id = $category->getElementsByTagName('id')->item(0)->nodeValue;
+	foreach ($tags as $tag) {
+		$current_id = $tag->getElementsByTagName('id')->item(0)->nodeValue;
 
 		if($current_id == $id) 
-			$root->removeChild($category);
+			$root->removeChild($tag);
 	}
-	$xml->Save('../../data/category.xml');
+	$xml->Save('../../data/tags.xml');
 
 }
 else
@@ -40,12 +40,12 @@ echo "ERROR: could not prepare SQL statement.";
 $conn->close();
 
 // redirect user after delete is successful
-header("Location: ../category_list.php");
+header("Location: ../tag_list.php");
 }
 else
 // if the 'id' variable isn't set, redirect the user
 {
-header("Location: ../category_list.php");
+header("Location: ../tag_list.php");
 }
 
 ?>
