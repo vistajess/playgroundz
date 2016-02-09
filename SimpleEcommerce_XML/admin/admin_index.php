@@ -16,6 +16,9 @@ Welcome <?php echo $_SESSION["username"]; ?>
 <div class="side-bar">
 	<ul class="links">
 		<li>
+			<a href="usertype_list.php">User Type</a>
+		</li>
+		<li>
 			<a href="">Users</a>
 		</li>
 		<li>

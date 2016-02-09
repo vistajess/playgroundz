@@ -1,11 +1,6 @@
 <?php
 /* Database connection end */
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ecommerce_kim";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
+include('../../config/config.php');
 // storing  request (ie, get/post) global array to a variable  
 $requestData= $_REQUEST;
 
@@ -49,11 +44,16 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 
 	$nestedData[] = $row["product_id"];
 	$nestedData[] = $row["product_name"];
-	$nestedData[] = '<img src="../images/'.$row["product_image"].'">';
+	$nestedData[] = '<img class="product-image" src="../images/'.$row["product_image"].'">';
 	$nestedData[] = $row["description"];
 	$nestedData[] = $row["price"];
 	$nestedData[] = $row["quantity"];
-	$nestedData[] = "<a href='modules/editProduct.php?id=".$row['product_id']."'>Edit</a>
+	// $nestedData[] = "<a href='modules/editProduct.php?id=".$row['product_id']."'>Edit</a>
+	$nestedData[] = "<a id='edit_category_modal' href='edit_product.php?id=".$row['product_id']."' data-product_id='".$row["product_id"]."'
+									data-product_name='".$row["product_name"]."' 
+									data-product_image='".$row["product_image"]."' 
+									data-quantity='".$row["quantity"]."' 
+									data-price='".$row["price"]."'>Edit</a>
 									<a href='modules/deleteProduct.php?id=".$row['product_id']."' onClick=\"javascript: return confirm('Please confirm deletion');\">Delete</a>";
 	
 	$data[] = $nestedData;

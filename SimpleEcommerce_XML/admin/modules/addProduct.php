@@ -1,15 +1,15 @@
 <?php
-if($_FILES['photo']['name'])
-{
+if($_FILES['product_image']['name']){
 	//if no errors...
-	if(!$_FILES['photo']['error'])
+	if(!$_FILES['product_image']['error'])
 	{
 		//now is the time to modify the future file name and validate the file
-		$new_file_name = strtolower($_FILES['photo']['tmp_name']); //rename file
-		if($_FILES['photo']['size'] > (2024000)) //can't be larger than 1 MB
+		$new_file_name = strtolower($_FILES['product_image']['tmp_name']); //rename file
+		if($_FILES['product_image']['size'] > (2024000)) //can't be larger than 1 MB
 		{
 			$valid_file = false;
 			$message = 'Oops!  Your file\'s size is to large.';
+			echo $message;
 		} else { 
 			$valid_file = true; 
 		};
@@ -19,16 +19,18 @@ if($_FILES['photo']['name'])
 		{
 			//move it to where we want it to be
 			$currentdir = getcwd();
-			$target = '../../images/' . basename($_FILES['photo']['name']);
-			move_uploaded_file($_FILES['photo']['tmp_name'], $target);
+			$target = '../../images/' . basename($_FILES['product_image']['name']);
+			move_uploaded_file($_FILES['product_image']['tmp_name'], $target);
 			$message = 'Congratulations!  Your file was accepted.';
+			echo $message;
 		} 
 	}
 	//if there is an error...
 	else
 	{
 		//set that to be the returned message
-		$message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['photo']['error'];
+		$message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['product_image']['error'];
+		echo $message;
 	}
 }
 
@@ -53,12 +55,12 @@ include('../../config/config.php');
 	$result = mysqli_fetch_row($query);
 
 	$id = $result[0];
-	$name = $_POST['tag_name'];
+	$name = $_POST['product_name'];
 	$description = $_POST['description'];
 	$quantity = $_POST['quantity'];
 	$price = $_POST['price'];
-	$image = basename($_FILES['photo']['name']);
-	$category = $_POST['category'];
+	$product_image = basename($_FILES['product_image']['name']);
+	$category = $_POST['category_id'];
 
 	$new_product = $xml->createElement("product");
 	$new_product->appendChild($xml->createElement('id', $id));
@@ -66,15 +68,19 @@ include('../../config/config.php');
 	$new_product->appendChild($xml->createElement('description', $description));
 	$new_product->appendChild($xml->createElement('quantity', $quantity));
 	$new_product->appendChild($xml->createElement('price', $price));
-	$new_product->appendChild($xml->createElement('image', $image));
+	$new_product->appendChild($xml->createElement('image', $product_image));
 	$new_product->appendChild($xml->createElement('category', $category));
 
 	$xml->getElementsByTagName('products')->item(0)->appendChild($new_product);
 
 	$xml->Save('../../data/products.xml');
 
-  $stmt = $conn->prepare("INSERT INTO tbltag (tag_name) VALUES(?)");
-  $stmt->bind_param("s",$name);
+  $stmt = $conn->prepare("INSERT INTO tblproduct (product_name,category_id,description,quantity,price,product_image) VALUES(?,?,?,?,?,?)");
+  $stmt->bind_param("ssssss",$name,$category,$description,$quantity,$price,$product_image);
   $stmt->execute();
-  header('Location: ../tag_list.php');
+  header('Location: ../products_list.php');
+  $return = Array(
+  	"status" => "200",
+  	"message" => "Success"
+  );
 ?>

@@ -1,0 +1,19 @@
+.product-image {
+	width: 150px;
+	height: 150px;
+	margin: 0px auto;
+}
+
+.tt-menu {
+	width: 100%;
+  background: #FFF;
+}
+
+.tag_list { padding-left: 0px;}
+.tag_list li {
+	display: inline-block;
+	list-style: none;
+  background: #808080;
+  padding: 3px;
+  margin: 0px 3px;
+}

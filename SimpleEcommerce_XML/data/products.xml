@@ -9,4 +9,76 @@
     <product_image>Number 2</product_image>
     <category>Number 2</category>
   </product>
+  <product>
+    <id>9</id>
+    <name>prod name</name>
+    <description>    	qe		</description>
+    <quantity>12</quantity>
+    <price>2</price>
+    <image/>
+    <category>8</category>
+  </product>
+  <product>
+    <id>10</id>
+    <name>pangalan</name>
+    <description>xxx</description>
+    <quantity>12</quantity>
+    <price>12</price>
+    <image/>
+    <category>8</category>
+  </product>
+  <product>
+    <id>13</id>
+    <name>qwe</name>
+    <description>    		qwe	</description>
+    <quantity>3</quantity>
+    <price>2</price>
+    <image>12650439_993284807426878_1026557702_n.jpg</image>
+    <category>8</category>
+  </product>
+  <product>
+    <id>14</id>
+    <name>add</name>
+    <description>    		ades	</description>
+    <quantity>4</quantity>
+    <price>2</price>
+    <image/>
+    <category/>
+  </product>
+  <product>
+    <id>14</id>
+    <name/>
+    <description>    	asd		</description>
+    <quantity>4</quantity>
+    <price>2</price>
+    <image>12650439_993284807426878_1026557702_n.jpg</image>
+    <category>8</category>
+  </product>
+  <product>
+    <id>14</id>
+    <name/>
+    <description>ASD	</description>
+    <quantity>4</quantity>
+    <price>2</price>
+    <image>12650439_993284807426878_1026557702_n.jpg</image>
+    <category>8</category>
+  </product>
+  <product>
+    <id>14</id>
+    <name>last</name>
+    <description>last    			</description>
+    <quantity>3</quantity>
+    <price>2</price>
+    <image>12656499_992426180846074_1979695301_o.jpg</image>
+    <category>8</category>
+  </product>
+  <product>
+    <id>15</id>
+    <name>qweqwe</name>
+    <description>qweqe</description>
+    <quantity>23</quantity>
+    <price>9</price>
+    <image>12650578_180924598938687_1910688643_n (1).jpg</image>
+    <category>8</category>
+  </product>
 </products>
