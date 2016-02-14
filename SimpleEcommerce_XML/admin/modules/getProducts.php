@@ -19,6 +19,9 @@ $columns = array(
 // getting total number records without any search
 $sql = "SELECT * ";
 $sql.=" FROM tblproduct";
+// $sql = "SELECT a.product_id,a.product_name,a.product_image,a.description,a.price,a.quantity,";
+// $sql.=	"b.category_name FROM tblproductas a ";
+// $sql.=	LEFT JOIN tblcategory as b on a.category_id = b.category_id";
 $query=mysqli_query($conn, $sql) or die("getProducts.php: get products");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.

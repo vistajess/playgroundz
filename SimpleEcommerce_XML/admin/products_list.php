@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <?php
+session_start();
+if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
+    header('Location: login.php');
+}
 include('header.php');
 include('../config/config.php');
 $sql = "SELECT category_id,category_name FROM tblcategory";
@@ -13,9 +17,14 @@ if ($result->num_rows > 0) {
     $category_json = json_encode($json_rows);
 }
 
-$sql = "SELECT * FROM tbltag";
+$sql = "SELECT distinct(tag_name),tag_id FROM `tbltag` group by tag_name";
 $result = $conn->query($sql);
 $json_rows = array();
+$dummy_arr = array(
+        array('tag_id' => '', 'tag_name' => '')
+        );
+$tags_json = json_encode($dummy_arr);
+
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
        $json_rows[] = $row;
@@ -24,7 +33,7 @@ if ($result->num_rows > 0) {
 }
 ?>
 <body>
-<div class="wrapper">
+<div class="container">
 	<h2>Product List</h2>
 	<a href="#addProduct">Add Product</a>
 	<table id="dataTableProducts"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
@@ -33,7 +42,7 @@ if ($result->num_rows > 0) {
 						<th>ID</th>
 						<th>Product&nbsp;Name</th>
 						<th>Product&nbsp;Image</th>
-						<th>Description</th>
+                        <th>Description</th>
 						<th>Price</th>
 						<th>Quantity</th>
 						<th>Actions</th>
@@ -74,10 +83,15 @@ if ($result->num_rows > 0) {
     		</div>
             <div>
                 <label class="-display">Tags</label>
-                <input type="text" class="typeahead" name="tag" id="tags">
-                <ul class="tag_list"></ul><br>
+                <div class="tag-container">
+                  <h6>Note: Press Tab to pick tag</h6>
+                  <input type="hidden" name="tags_array[]" id="tags_array"><br>
+                  <input type="text" class="typeahead" placeholder="Tags here.." id="tag_input"><br>
+                  <span class="tags"></span>             
+                </div>
             </div>
     		<div>
+          <br>
     			<button type="submit" name="add_product" id="add_product">Add Product</button>
     		</div>
     	</form>

@@ -13,21 +13,6 @@ $sql = "UPDATE tbluser_type set type_name ='".$type_name."' WHERE user_type_id =
 $conn->query($sql);
 if ($conn->query($sql)) {
 
-	// $xml = new DOMDocument("1.0", "utf-8");
-	// $xml->formatOutput = true;
-	// $xml->preserveWhiteSpace = false;
-	// $xml->Load('../../data/tags.xml');
-
-	// $root = $xml->getElementsByTagName('tags')->item(0);
-	// $tags = $root->getElementsByTagName('tag');	
-
-	// foreach ($tags as $tag) {
-	// 	if($tag->getElementsByTagName('id')->item(0)->nodeValue == $tag_id) {
-	// 		$tag->getElementsByTagName('name')->item(0)->nodeValue = $tag_name;
-	// 	}
-	// }
-
-	// $xml->Save('../../data/tags.xml');
 	$return = Array(
 		"status" => "200",
 		"message" => "Success",

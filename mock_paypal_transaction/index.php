@@ -12,7 +12,7 @@ require 'src/start.php';
  	if($user->member) {
  		echo 'you are a member';
  	} else {
- 		echo 'You are not a member. <a href="member/payment.php">Become a member</a>';
+ 		echo 'You are not a member. <a href="member/payment2.php">Become a member</a>';
  	}
  ?>
 </body>

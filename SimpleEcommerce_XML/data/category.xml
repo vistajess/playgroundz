@@ -40,4 +40,24 @@
     <name>Shoes123</name>
     <details>Category for shoes    			</details>
   </category>
+  <category>
+    <id>20</id>
+    <name>Food Category</name>
+    <details>category for foods    			</details>
+  </category>
+  <category>
+    <id>21</id>
+    <name>Apparel Category</name>
+    <details>apparel    			</details>
+  </category>
+  <category>
+    <id>22</id>
+    <name>Appliances Category</name>
+    <details>122    			</details>
+  </category>
+  <category>
+    <id>23</id>
+    <name>Gadgets Category</name>
+    <details>123    			</details>
+  </category>
 </categories>

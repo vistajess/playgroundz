@@ -61,7 +61,29 @@ include('../../config/config.php');
 	$price = $_POST['price'];
 	$product_image = basename($_FILES['product_image']['name']);
 	$category = $_POST['category_id'];
+	$tags_array_string = $_POST['tags_array'];
+	$tags_array_id = [];
+	$tags_sql = '';
 
+	$tag_names = str_replace( array('[',']') , ''  , implode("','", $tags_array_string));
+	$sql = "SELECT tag_id FROM tbltag WHERE tag_name IN ({$tag_names})";
+	$query = mysqli_query($conn, $sql);
+	while( $row = mysqli_fetch_array($query) ) {
+		$tags_array_id[] = $row['tag_id'];
+	};
+
+	$tags_sql = '';
+	foreach ($tags_array_id as &$tag_id) {
+	  $tags_sql .= "INSERT INTO tblproduct_tag (product_id, tag_id, category_id) 
+	  				VALUES ('".$id."','".$tag_id."','".$category."');";
+	  //SAVE EACH ITEMS IN THE PRODUCT TAG TABLE
+	};
+	$conn->multi_query($tags_sql);
+	$conn->close();
+
+	//====================== XML INTEGRATION
+
+	include('../../config/config.php');
 	$new_product = $xml->createElement("product");
 	$new_product->appendChild($xml->createElement('id', $id));
 	$new_product->appendChild($xml->createElement('name', $name));

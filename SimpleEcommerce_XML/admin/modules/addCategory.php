@@ -28,6 +28,3 @@ include('../../config/config.php');
   $stmt->execute();
   header('Location: ../category_list.php');
 ?>
-
-</br>
-<a href="../category_list.php">Back</a>

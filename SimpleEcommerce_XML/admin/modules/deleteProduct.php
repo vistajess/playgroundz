@@ -15,6 +15,11 @@ $stmt->execute();
 $stmt->close();
 
 
+$stmt = $conn->prepare("DELETE FROM tblproduct_tag WHERE product_id = ? LIMIT 1")
+$stmt->bind_param("s",$id);
+$stmt->execute();
+$stmt->close();
+
 // delete to XML FILE
 	$xml = new DOMDocument("1.0", "utf-8");
 	$xml->formatOutput = true;

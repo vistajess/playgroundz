@@ -1,0 +1,42 @@
+.user {
+  float: left;
+  margin-top: 50px;
+  color: #fff;
+  font-size: 22px;
+}
+
+.header {
+  background: url('../images/header.png');
+  height: 600px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.category {
+  position: absolute;
+}
+
+.category li {
+  display: block !important;
+}
+
+.navigation {
+	padding-left: 0px;
+	float: right;
+    margin-top: 50px;
+}
+
+.navigation li {
+	list-style: none;
+	display: inline-block;
+	border-right: 2px solid #fff;
+}
+
+.navigation > li > a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: sans-serif;
+    padding: 20px;
+}

@@ -5,7 +5,7 @@ use PayPal\Api\Amount;
 use PayPal\Api\Transaction;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
-use PayPal\Exception\PPConnectionException;
+use PayPal\Exception\PayPalConnectionException;
 
 require '../src/start.php';
 
@@ -56,7 +56,7 @@ try {
 		'payment_id' => $payment->getId(),
 		'hash' => $hash
 	]);
-} catch(PPConnectionException $e) {
+} catch(PayPalConnectionException $e) {
 	//Perhaps log an error
 	header('Location ../paypal/error.php');
 }

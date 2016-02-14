@@ -50,6 +50,36 @@ $description = $_POST['description'];
 $quantity = $_POST['quantity'];
 $price = $_POST['price'];
 
+// DELETE FIRST THE PRODUCT AND TAGS IN PRODUCT_TAG TBL
+	$stmt = $conn->prepare("DELETE FROM tblproduct_tag WHERE product_id = ? LIMIT 1");
+	$stmt->bind_param("s",$product_id);
+	$stmt->execute();
+	$stmt->close();
+
+// THEN ADD PRODUCT AND TAGS IN PRODUCT_TAG TBL
+	$tags_array_string = $_POST['tags_array'];
+	$tags_array_id = [];
+	$tags_sql = '';
+
+	$tag_names = str_replace( array('[',']') , ''  , implode("','", $tags_array_string));
+	$sql = "SELECT tag_id FROM tbltag WHERE tag_name IN ({$tag_names})";
+	$query = mysqli_query($conn, $sql);
+	while( $row = mysqli_fetch_array($query) ) {
+		$tags_array_id[] = $row['tag_id'];
+	};
+
+	$tags_sql = '';
+	foreach ($tags_array_id as &$tag_id) {
+	  $tags_sql .= "INSERT INTO tblproduct_tag (product_id, tag_id, category_id) 
+	  				VALUES ('".$product_id."','".$tag_id."','".$category_id."');";
+	  //SAVE EACH ITEMS IN THE PRODUCT TAG TABLE
+	};
+	$conn->multi_query($tags_sql);
+	$conn->close();
+
+//===========================================
+include('../../config/config.php');
+
 // update record from database
 $sql = "UPDATE tblproduct set product_name ='".$product_name."',category_id ='".$category_id."',description ='".$description."',quantity ='".$quantity."',price ='".$price."',product_image ='".$product_image."' WHERE product_id = '".$product_id."' LIMIT 1";
 $conn->query($sql);
