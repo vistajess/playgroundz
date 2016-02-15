@@ -58,10 +58,12 @@ $price = $_POST['price'];
 
 // THEN ADD PRODUCT AND TAGS IN PRODUCT_TAG TBL
 	$tags_array_string = $_POST['tags_array'];
+	// print_r($tags_array_string);
 	$tags_array_id = [];
 	$tags_sql = '';
 
 	$tag_names = str_replace( array('[',']') , ''  , implode("','", $tags_array_string));
+	// echo $tag_names;die();
 	$sql = "SELECT tag_id FROM tbltag WHERE tag_name IN ({$tag_names})";
 	$query = mysqli_query($conn, $sql);
 	while( $row = mysqli_fetch_array($query) ) {

@@ -1,0 +1,35 @@
+#cart_container {
+    width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+.cart-item {
+	width:600px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.cart-item td {
+	vertical-align: middle;
+	text-align: center;
+}
+
+tr.space > td {
+  padding-bottom: 1em;
+}
+
+.cart-product-image {
+  width: 150px;
+  height: 150px;
+  margin: 0px auto;
+}
+
+.cart-product-qty {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+}
