@@ -82,6 +82,7 @@ if ($result->num_rows > 0) {
 										<th>Price</th>
 										<th>Quantity</th>
 										<th>Actions</th>
+										<th>Actions</th>
 									</tr>
 									</thead>
 								</table>

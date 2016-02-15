@@ -2,13 +2,24 @@ a {
   text-decoration: none;
 }
 
+.cart-indicator {
+  position: absolute;
+  background: #999;
+  width: 100%;
+  top: 0;
+  left: 0;
+  font-size: 12px;
+  padding: 6px;
+  color: #fff;
+  display: none;
+}
 .disabled {
   background:#acbad4 !important;
   pointer-events: none !important;
   color: #000 !important;
 }
 
-.add-cart {
+.view-product {
   color: #fff;
   background: #7175FF;
   padding: 10px;

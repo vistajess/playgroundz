@@ -21,6 +21,7 @@
   overflow: hidden;
   background: #fff;
   box-shadow: 2px 2px 2px #dddddd;
+  position: relative;
 }
 
 #bycategory-products tbody > tr td {
@@ -29,16 +30,27 @@
 	text-align: center;
 }
 
-#bycategory-products .product-name {
-	margin: 0px;
-	padding: 0px;
-}
-
 #bycategory-products_filter {
   float: none;
   display: none;
   text-align: center;
   margin-bottom: 30px;
+}
+
+
+.product-name {
+  margin: 0px;
+  padding: 0px;
+}
+
+.product-price {
+  margin: 0px;
+  padding: 0px;
+}
+
+.product-quantity {
+  margin: 0px;
+  padding: 0px;
 }
 
 /*==================================*/
@@ -65,11 +77,13 @@
   overflow: hidden;
   background: #fff;
   box-shadow: 2px 2px 2px #dddddd;
+  position: relative;
 }
 
 #products tbody > tr td {
   display: block;
   border: 0px;
+  padding: 5px;
   text-align: center;
 }
 

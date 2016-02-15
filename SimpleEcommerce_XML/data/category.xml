@@ -1,41 +1,6 @@
 <?xml version="1.0"?>
 <categories>
   <category>
-    <id>8</id>
-    <name>asdssXXxx</name>
-    <details>asdx</details>
-  </category>
-  <category>
-    <id>10</id>
-    <name>Shoes</name>
-    <details>Category for shoes    			</details>
-  </category>
-  <category>
-    <id>12</id>
-    <name>category 3</name>
-    <details>3 category    			</details>
-  </category>
-  <category>
-    <id>15</id>
-    <name>God</name>
-    <details>Save me    			</details>
-  </category>
-  <category>
-    <id>16</id>
-    <name>1</name>
-    <details>3    			</details>
-  </category>
-  <category>
-    <id>17</id>
-    <name>Kim Aquino</name>
-    <details>Sample</details>
-  </category>
-  <category>
-    <id>18</id>
-    <name>category 3zzz</name>
-    <details>3 category    			</details>
-  </category>
-  <category>
     <id>19</id>
     <name>Shoes123</name>
     <details>Category for shoes    			</details>

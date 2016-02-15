@@ -1,0 +1,30 @@
+.product-view {}
+.product-view .product-container { 
+	overflow: hidden;
+	background: #fff;
+  margin-top: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+ }
+.product-view .title { 
+    text-align: center;
+    /*color: #fff;*/
+    text-transform: uppercase;
+}
+.product-view .left-panel {
+	width: 500px;
+	text-align: center;
+	display: inline-block;
+	float: left;
+}
+.product-view .right-panel {
+	width: 500px;
+	display: inline-block;
+	float: left;
+}
+
+.product-view .image {
+	width: 250px;
+	height: 250px;
+}

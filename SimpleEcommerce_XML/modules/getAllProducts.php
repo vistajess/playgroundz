@@ -7,9 +7,9 @@ $requestData= $_REQUEST;
 
 $columns = array( 
 // datatable column index  => database column name
-	0 => 'product_name',
+	0 => 'product_id',
 	1 => 'product_image',
-	2 => 'description',
+	2 => 'product_name',
 	3 => 'price',
 	4 => 'quantity',
 	5 => 'actions',
@@ -17,9 +17,7 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT * FROM `tblproduct`";
-// $sql = "SELECT a.product_id,a.product_name,a.product_image,a.description,a.price,a.quantity,";
-// $sql.=	"b.category_name FROM tblproductas a ";
-// $sql.=	LEFT JOIN tblcategory as b on a.category_id = b.category_id";
+
 $query=mysqli_query($conn, $sql) or die("getProducts.php: get products");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -46,13 +44,14 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = '<input type="hidden" class="product_id" data-product_id="'.$row["product_id"].'">';
 	$nestedData[] = '<img class="product-image" src="images/'.$row["product_image"].'">';
 	$nestedData[] = '<h6 class="product-name">Product Name: ' . $row["product_name"] . '</h6>';
-	$nestedData[] = '<h6 class="product-name">Price : ' . $row["price"] . '</h6>';
-	$nestedData[] = '<h6 class="product-name">Quantity : ' . $row["quantity"] . '</h6>';
-	$nestedData[] = "<button id='' class='add-cart' href='#' data-product_id='".$row["product_id"]."'
+	$nestedData[] = '<h6 class="product-price">Price : ' . $row["price"] . '</h6>';
+	$nestedData[] = '<h6 class="product-quantity">Quantity : ' . $row["quantity"] . '</h6>';
+	$nestedData[] = "<a id='' class='view-product' href='product_view.php?product_id=".$row["product_id"]."' data-product_id='".$row["product_id"]."'
 									data-product_name='".$row["product_name"]."' 
 									data-product_image='".$row["product_image"]."' 
 									data-quantity='".$row["quantity"]."' 
-									data-price='".$row["price"]."'>Add To Cart</button>";
+									data-price='".$row["price"]."'>View Product</a>";
+$nestedData[] = '<span class="cart-indicator">Added to cart</span>';				
 	
 	$data[] = $nestedData;
 }

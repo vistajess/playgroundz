@@ -47,14 +47,14 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = '<input type="hidden" class="product_id" data-product_id="'.$row["product_id"].'">';
 	$nestedData[] = '<img class="product-image" src="images/'.$row["product_image"].'">';
 	$nestedData[] = '<h6 class="product-name">Product Name: ' . $row["product_name"] . '</h6>';
-	$nestedData[] = '<h6 class="product-name">Price : ' . $row["price"] . '</h6>';
-	$nestedData[] = '<h6 class="product-name">Quantity : ' . $row["quantity"] . '</h6>';
-	$nestedData[] = "<a id='' class='add-cart' href='#' data-product_id='".$row["product_id"]."'
+	$nestedData[] = '<h6 class="product-price">Price : ' . $row["price"] . '</h6>';
+	$nestedData[] = '<h6 class="product-quantity">Quantity : ' . $row["quantity"] . '</h6>';
+	$nestedData[] = "<a id='' class='view-product' href='product_view.php?product_id=".$row["product_id"]."' data-product_id='".$row["product_id"]."'
 									data-product_name='".$row["product_name"]."' 
 									data-product_image='".$row["product_image"]."' 
 									data-quantity='".$row["quantity"]."' 
-									data-price='".$row["price"]."'>Add to Cart</a>";
-	
+									data-price='".$row["price"]."'>View Product</a>";				
+$nestedData[] = '<span class="cart-indicator">Added to cart</span>';		
 	$data[] = $nestedData;
 }
 
