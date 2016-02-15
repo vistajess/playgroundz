@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
 <categories>
   <category>
-    <id>19</id>
-    <name>Shoes123</name>
-    <details>Category for shoes    			</details>
-  </category>
-  <category>
     <id>20</id>
     <name>Food Category</name>
     <details>category for foods    			</details>
