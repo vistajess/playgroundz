@@ -39,7 +39,8 @@ if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
 				<p>Description: <?php echo $row['description']; ?></p>
 				<p>Inventory : <?php echo $row['quantity']; ?></p>
 				<p>Price : <?php echo $row['price']; ?></p>
-				<p><button></button><a href="">My Cart</a></p>
+				<p><button id="add-cart" class="product_view_btn" data-product_id="<?php echo $row['product_id']; ?>">Add To Cart</button>
+				   <a href="cart.php"class="product_view_btn" style="background: #DD6E41;" >My Cart</a></p>
 			</div>
 		</div>
 	</div>	
@@ -52,8 +53,9 @@ if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
 </div>
 <?php include('footer.php'); ?>
 </body>
+<script type="text/javascript">
+	var product_id = "<?php echo $row['product_id']; ?>";
+</script>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/typeahead.js"></script>
-<script type="text/javascript" src="js/datatables_latest.js"></script>
-<script type="text/javascript" src="js/getAllProduct.js"></script>
+<script type="text/javascript" src="js/product_view.js"></script>
 </html>

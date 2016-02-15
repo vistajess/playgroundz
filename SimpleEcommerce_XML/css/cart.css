@@ -1,5 +1,5 @@
 #cart_container {
-    width: 700px;
+    width: 900px;
     margin: 0 auto;
     padding: 10px;
     background: rgba(255, 255, 255, 0.9);
@@ -10,6 +10,7 @@
 	width:600px;
 	margin: 0 auto;
 	padding: 10px;
+  position: relative;
 }
 
 .cart-item td {
@@ -30,6 +31,69 @@ tr.space > td {
 .cart-product-qty {
   width: 50px;
   height: 50px;
-  font-size: 24px;
+  font-size: 16px;
   text-align: center;
+}
+
+.remove-item {
+  padding: 10px;
+  height: 20px;
+  width: 20px;
+  background: #FF9800;
+  border-radius: 20px;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.total {
+  text-align: right;
+  margin-right: 100px;
+  margin-bottom: 50px;
+}
+
+.payment-btn {
+  text-align: center;
+}
+
+.paypal {
+  height: 80px;
+  width: 200px;
+  background: url('../images/paypal.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 8px;
+}
+
+.cod {
+  border-radius: 8px;
+    padding: 27px 10px;
+    width: 200px;
+    font-size: 20px;
+    color: #fff;
+    background: #7175FF;
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    bottom: 32px;
+    cursor: pointer;
+}
+
+.cod_pay {
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: 20px;
+  color: #fff;
+  background: #7175FF;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+#codPayment  > div {
+  background: rgba(255, 255, 255, 0.9);
 }

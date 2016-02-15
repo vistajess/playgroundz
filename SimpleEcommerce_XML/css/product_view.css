@@ -1,4 +1,16 @@
 .product-view {}
+.product-view .product_view_btn {
+	border: none;
+  background: #7175ff;
+  color: #fff;
+  padding: 10px;
+  height: 38px;
+  box-sizing: border-box;
+  display: inline-block;
+  line-height: 1;
+  border-radius: 6px;
+  cursor: pointer;
+}
 .product-view .product-container { 
 	overflow: hidden;
 	background: #fff;

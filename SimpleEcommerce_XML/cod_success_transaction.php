@@ -5,12 +5,6 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["user_id"])) {
 	header('Location: index.php');
 }
 include('config/config.php');
-	$user_id = $_SESSION['user_id'];
-	$sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tbl_transaction'";
-	$query = mysqli_query($conn, $sql);
-	$result = mysqli_fetch_row($query);
-	$transaction_id = $result[0];
-
 if( isset( $_COOKIE['cart']  )) { 
 	$cart =  $_COOKIE['cart'];
 	$cart_items = substr($cart, 1, -1);
@@ -60,22 +54,7 @@ if ($result->num_rows > 0) {
 
 	<div class="content">
 		<div class="container">
-			<div id="cart_container">
-				<h4><i class="fa fa-shopping-cart"></i> Shopping Cart</h4>
-				<table width="100%">
-					<thead>
-						<th width="25%">Image</th>
-						<th width="15%">Item Name</th>
-						<th width="15%">Quantity</th>
-						<th width="15%">Price</th>
-						<th width="15%">Subtotal</th>
-						<th width="15%">Remove</th>
-					</thead>
-					<tbody></tbody>
-				</table>
-				<div id="shopping-cart-details">
-				</div>
-			</div>
+
 		</div>
 	</div>	
 
@@ -85,33 +64,10 @@ if ($result->num_rows > 0) {
 		</div>
 	</div>
 </div>
-
-<!--  COD PAYMENT -->
-<div id="codPayment" class="modalDialog">
-    <div>	<a href="#close" title="Close" class="close">X</a>
-    	<h2>Cash On Delivery Method</h2>
-    		<div>
-    			<label class="-display">Transaction Number</label>
-    			<input type="text" disabled name="transaction_id" id="transaction_id" value="<?php echo $transaction_id;?>">
-    		</div>
-    		 <div>
-    		 	<label class="-display">Total Amount</label>
-    		 	<input type="text" id="cod_total" disabled name="cod_total" value="">
-    		</div>
-    		<div>
-    		 	<label class="-display">Pay Amount: </label>
-    		 	<input type="text" id="pay_amount" name="pay_amount" value="">
-    		</div>
-    		<div>
-    			<button type="button" id="cod_pay" name="cod_pay" class="cod_pay">Pay</button>
-    		</div>
-    </div>
-</div>
 <?php include('footer.php'); ?>
 </body>
 <script type="text/javascript">
 	var cart_items = JSON.parse('<?php echo $product_json;?>');
-	var user_id = '<?php echo $user_id;?>';
 </script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/typeahead.js"></script>
