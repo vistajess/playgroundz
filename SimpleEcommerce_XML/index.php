@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
 <body>
 <div class="content-wrapper">
 	<div class="header">
-	<?php include('header.php'); ?>
+	<?php //include('header.php'); ?>
 	</div>
 
 	<div class="content"  style="position: relative;">

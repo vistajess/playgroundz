@@ -6,10 +6,10 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["user_id"])) {
 }
 include('config/config.php');
 	$user_id = $_SESSION['user_id'];
-	$sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tbl_transaction'";
+	$sql = "select id from tbl_transaction order by id  desc limit 1";
 	$query = mysqli_query($conn, $sql);
 	$result = mysqli_fetch_row($query);
-	$transaction_id = $result[0];
+	$transaction_id = $result[0] + 1;
 
 if( isset( $_COOKIE['cart']  )) { 
 	$cart =  $_COOKIE['cart'];
@@ -99,8 +99,12 @@ if ($result->num_rows > 0) {
     		 	<input type="text" id="cod_total" disabled name="cod_total" value="">
     		</div>
     		<div>
-    		 	<label class="-display">Pay Amount: </label>
-    		 	<input type="text" id="pay_amount" name="pay_amount" value="">
+    		 	<label class="-display">Shipping Address: </label>
+    		 	<input type="text" id="shipping_address" name="pay_amount" value="">
+    		</div>
+    		<div>
+    		 	<label class="-display">Shipping Contact Number: </label>
+    		 	<input type="text" id="shipping_contact_number" name="pay_amount" value="">
     		</div>
     		<div>
     			<button type="button" id="cod_pay" name="cod_pay" class="cod_pay">Pay</button>

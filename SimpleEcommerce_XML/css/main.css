@@ -98,6 +98,17 @@ a {
   text-align: center;
 }
 
+.success_transaction {
+  width: 600px;
+  margin: 30px auto;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
 
 /* =======================SKELETON================================= */
 html,

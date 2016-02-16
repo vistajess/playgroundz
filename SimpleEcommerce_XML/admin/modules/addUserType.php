@@ -1,11 +1,11 @@
 <?php
 include('../../config/config.php');
 
-	$sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tbluser_type'";
-	$query = mysqli_query($conn, $sql);
-	$result = mysqli_fetch_row($query);
+	// $sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tbluser_type'";
+	// $query = mysqli_query($conn, $sql);
+	// $result = mysqli_fetch_row($query);
 
-	$id = $result[0];
+	// $id = $result[0];
 	$name = $_POST['type_name'];
 
   $stmt = $conn->prepare("INSERT INTO tbluser_type (type_name) VALUES(?)");

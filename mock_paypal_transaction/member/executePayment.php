@@ -36,18 +36,19 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
     	try {
             $payment = Payment::get($paymentId, $api);
              // ResultPrinter::printResult("Executed Payment", "Payment", $payment->getId(), $execution, $result);
+            echo 'Result Executed Payment';
         } catch (Exception $ex) {
  	        // ResultPrinter::printError("Get Payment", "Payment", null, null, $ex);
- 	        echo 'GET PAYMENT';
+ 	        echo 'Error GET PAYMENT';
             exit(1);
         }
     } catch (Exception $ex) {
     	// ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
-    	echo "Executed Payment";
+    	echo "Error Executed Payment";
 			exit(1);
     }
     // ResultPrinter::printResult("Get Payment", "Payment", $payment->getId(), null, $payment);
-    echo 'Get Payment';
+    echo 'Result Get Payment';
     return $payment;
 
     } else {

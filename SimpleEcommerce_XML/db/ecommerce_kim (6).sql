@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2016 at 07:45 PM
+-- Generation Time: Feb 16, 2016 at 08:20 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -63,11 +63,11 @@ CREATE TABLE IF NOT EXISTS `tblproduct` (
 --
 
 INSERT INTO `tblproduct` (`product_id`, `product_name`, `category_id`, `description`, `quantity`, `price`, `product_image`) VALUES
-(36, 'Laptop', '23', 'Wtf', 120, 12000, 'prod4.jpg'),
-(37, 'Phone', '23', 'Phone na malupet', 33, 800, 'prod1.jpg'),
-(38, 'Cheese cake', '20', 'boom', 120, 800, 'header.png'),
-(39, 'Pasta', '20', 'masarap na pasta', 33, 12, 'pasta.jpg'),
-(40, 'Burger', '20', 'burger na masarap', 50, 120, 'download.jpg'),
+(36, 'Laptop', '23', 'Wtf', 23, 12000, 'prod4.jpg'),
+(37, 'Phone', '23', 'Phone na malupet', 20, 800, 'prod1.jpg'),
+(38, 'Cheese cake', '20', 'boom', 30, 800, 'header.png'),
+(39, 'Pasta', '20', 'masarap na pasta', 31, 12, 'pasta.jpg'),
+(40, 'Burger', '20', 'burger na masarap', 45, 120, 'download.jpg'),
 (41, 'Go Pro', '23', 'gopro', 20, 5000, 'gopro.jpg'),
 (42, 'cell phone', '23', 'cell phone', 5, 3000, 'cp.jpg'),
 (43, 'Nike Flyknit', '21', 'sneakers', 20, 5000, 'nike.jpg'),
@@ -220,8 +220,28 @@ CREATE TABLE IF NOT EXISTS `tbl_transaction` (
   `user_id` varchar(11) NOT NULL,
   `payment_method` varchar(200) NOT NULL,
   `transaction_id` varchar(100) NOT NULL,
-  `total_amount` double(20,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `total_amount` double(20,2) NOT NULL,
+  `transaction_date` datetime NOT NULL,
+  `shipping_address` varchar(200) NOT NULL,
+  `shipping_contact_number` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_transaction`
+--
+
+INSERT INTO `tbl_transaction` (`id`, `user_id`, `payment_method`, `transaction_id`, `total_amount`, `transaction_date`, `shipping_address`, `shipping_contact_number`) VALUES
+(1, '', '', '', 0.00, '0000-00-00 00:00:00', '', ''),
+(3, '2', 'cod', '2', 0.00, '0000-00-00 00:00:00', '', ''),
+(4, '2', 'cod', '2', 12800.00, '0000-00-00 00:00:00', '', ''),
+(5, '2', 'cod', '5', 12800.00, '0000-00-00 00:00:00', '', ''),
+(6, '2', 'cod', '6', 12800.00, '0000-00-00 00:00:00', '', ''),
+(7, '2', 'cod', '7', 12800.00, '0000-00-00 00:00:00', '', ''),
+(8, '2', 'cod', '8', 132.00, '2016-02-16 16:54:22', '', ''),
+(9, '2', 'cod', '9', 800.00, '2016-02-16 17:42:07', '12313', '123123'),
+(10, '2', 'cod', '10', 360.00, '2016-02-16 17:45:12', '', ''),
+(11, '2', 'cod', '11', 800.00, '2016-02-16 17:46:17', 'qweqwe', 'qweqwe'),
+(12, '2', 'cod', '11', 800.00, '2016-02-16 17:46:36', 'qweqwe', 'qweqwe');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +328,7 @@ ALTER TABLE `tbluser_type`
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

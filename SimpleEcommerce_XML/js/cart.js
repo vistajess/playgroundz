@@ -16,7 +16,7 @@ function renderItems(array) {
 								<td width="20%"><img src="images/'+product.product_image+'" class="cart-product-image"></td> \
 								<td width="20%"><h4>'+product.product_name+'</h4> </td> \
 								<td width="20%"><input type="number" class="cart-product-qty" value="'+product.quantity_ordered+'" min="1" max="'+product.quantity+'" \
-								onkeypress="return isNumberKey(event)" data-prod_id='+product.product_id+'> </td> \
+								onkeypress="return isNumberKey(event)" onkeydown="return onKeyDown(event)" data-prod_id='+product.product_id+'> </td> \
 								<td width="20%"><h4>'+product.price+'</h4> </td> \
 								<td width="20%"><h4>'+product.subtotal+'</h4> </td> \
 								<td width="20%"><span class="remove-item" data-product_id='+product.product_id+'>x</span> </td> \
@@ -28,7 +28,7 @@ function renderItems(array) {
   $('#shopping-cart-details').html('');
   var template = '<div class="total text-right">TOTAL:    '+grand_total+'</div>\
   								<div class="payment-btn"> \
-  										<button class="paypal"> </button> \
+  										<button type="button" id="paypal_payment" class="paypal"> </button> \
   										<a class="cod" id="cod_payment" href="#codPayment">Cash On Delivery </a> \
   								</div>';
   $('#shopping-cart-details').append(template);
@@ -43,11 +43,18 @@ function isNumberKey(evt)   {
       return true;
    }
 
+function onKeyDown(event) {   
+  event.preventDefault();
+}
+
 renderItems(cart);
 
 // ==============================
 $('body').on('click','.remove-item', function() {
 	var product_id = $(this).data('product_id');
+	var itemSearched = cart_items.filter(function(product,index) {  return product_id == product.product_id; });
+	var subtotal = itemSearched[0].subtotal;
+	grand_total = grand_total - subtotal;
 	var filterCart = cart_items.filter(function(item) { return item.product_id != product_id; });
 	cart_items = filterCart;
 	var cart_items_id = cart_items.map(function(item){ return parseInt(item.product_id); });
@@ -92,26 +99,56 @@ $('body').on('click','#cod_payment', function() {
 	$('#cod_total').val(grand_total);
 });
 
-$("#cod_pay").click(function() {
+$('body').on('click','#cod_pay', function() {
 			var products = cart_items.map(function(cart) {return cart.product_id;});
 			var dataObj = {
 				"user_id" : user_id,
 				"payment_method" : 'cod',
 				"transaction_id" : $('#transaction_id').val(),
+				"shipping_address" : $('#shipping_address').val(),
+				"shipping_contact_number" : $('#shipping_contact_number').val(),
 				"total_amount" : $('#cod_total').val(),
-				"products" : JSON.stringify(products)
+				"products" : JSON.stringify(cart_items)
 			};
+			console.log(dataObj);
 		 	dataObj = $(this).serialize() + "&" + $.param(dataObj);
 			 $.ajax({
 		      type: "POST",
 		      dataType: "json",
 		      url: '../modules/codPay.php',
 		      data: dataObj,
-		      beforeSend: function() {
-		      	$(this).html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+		      beforeSend: function(xhr, opts) {
+		      	console.log('be');
+		      	$('#cod_pay').html('<i class="fa fa-spinner fa-spin"></i> Processing...');
 		      },
 		      success: function(data) {
-		      	window.location.href = "../cod_success_transaction.php";
+		      	document.cookie = 'cart=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		      	// window.location.href = "../cod_success_transaction.php";
+		      },
+		      error: function(xhr, status, error) {
+		      }
+		  });
+});
+
+
+$('body').on('click','#paypal_payment', function() {
+			var products = cart_items.map(function(cart) {return cart.product_id;});
+			var dataObj = {
+				"cart" : JSON.stringify(cart_items),
+				"grand_total" : grand_total
+			};
+			console.log(dataObj);
+		 	dataObj = $(this).serialize() + "&" + $.param(dataObj);
+			 $.ajax({
+		      type: "POST",
+		      dataType: "json",
+		      url: 'modules/createCartSession.php',
+		      data: dataObj,
+		      beforeSend: function(xhr, opts) {
+		      },
+		      success: function(data) {
+		      	// document.cookie = 'cart=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		      	window.location.href = "modules/paypalPay.php";
 		      },
 		      error: function(xhr, status, error) {
 		      }

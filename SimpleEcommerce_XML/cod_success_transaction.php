@@ -54,7 +54,11 @@ if ($result->num_rows > 0) {
 
 	<div class="content">
 		<div class="container">
-
+			<div class="success_transaction">
+				<p>Thank you for shopping with us.</p>
+				<p>Your transaction was successful, payment was received.</p>
+				 <a href="category.php">Back to Shopping</a>
+			</div>
 		</div>
 	</div>	
 
