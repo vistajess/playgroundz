@@ -6,12 +6,16 @@ include('../../config/config.php');
 	$xml->preserveWhiteSpace = false;
 	$xml->Load('../../data/tags.xml');
 
-	$sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tbltag'";
-	$query = mysqli_query($conn, $sql);
-	$result = mysqli_fetch_row($query);
-
-	$id = $result[0];
+	// $sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tbltag'";
+	// $query = mysqli_query($conn, $sql);
+	// $result = mysqli_fetch_row($query);
 	$name = $_POST['tag_name'];
+	
+	$stmt = $conn->prepare("INSERT INTO tbltag (tag_name) VALUES(?)");
+  $stmt->bind_param("s",$name);
+  $stmt->execute();
+  $id = mysqli_insert_id($conn);
+
 
 	$new_tag = $xml->createElement("tag");
 	$new_tag->appendChild($xml->createElement('id', $id));
@@ -21,8 +25,6 @@ include('../../config/config.php');
 
 	$xml->Save('../../data/tags.xml');
 
-  $stmt = $conn->prepare("INSERT INTO tbltag (tag_name) VALUES(?)");
-  $stmt->bind_param("s",$name);
-  $stmt->execute();
+
   header('Location: ../tag_list.php');
 ?>

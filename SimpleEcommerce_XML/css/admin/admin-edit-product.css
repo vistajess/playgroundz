@@ -1,0 +1,11 @@
+#editProduct {
+	width: 700px;
+	margin: 135px auto 0px;
+	text-align: center;
+}
+
+.product-edit-left ,
+.product-edit-right {
+	width: 250px;
+  display: inline-block;
+}

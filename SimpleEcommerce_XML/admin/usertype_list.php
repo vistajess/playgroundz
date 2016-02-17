@@ -7,8 +7,11 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 }
 include('header.php');
 ?>
-<body>
-<div>
+<body class="admin-bg">
+
+<?php include('sidebar.php');?>
+<div class="container">
+    <div class="admin-content">
 	<h2>User Type List</h2>
 	<a href="#addUserType">Add User Type</a>
 	<table id="dataTableUserType"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">

@@ -56,7 +56,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <head>
 	<title>Edit Product</title>
 </head>
-<body>
+<body class="admin-bg">
 
 <a href="product_list.php">Back</a>
 
@@ -64,47 +64,51 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <div id="editProduct"> 
     <h2>Edit Product</h2>
     <form method="post" action="modules/updateProduct.php" enctype="multipart/form-data">
-        <div>
-        	<input type="hidden" name="product_id" id="product_name" value="<?php echo  $row['product_id'];?>" >
-            <label class="-display">Category</label>
-            <select id="category_option" name="category_id">
-            	
-            </select>
-        </div>
-        <div>
-            <label class="-display">Product Name</label>
-            <input required type="text" name="product_name" id="product_name" value="<?php echo  $row['product_name'];?>" >
-        </div>
-        <div>
-            <label class="-display">Product Image</label>
-            <input class="product-image" type="image" src="../images/<?php echo $row['product_image']; ?>"/><br/>
-            <input type="file" name="product_image" id="product_image" size="25" value="<?php echo  $row['product_image'];?>" />
-            <input type="hidden" name="product_image" size="25" value="<?php echo  $row['product_image'];?>" />
-        </div>
-         <div>
-            <label class="-display">Description</label>
-            <input type="text" name="description" id="description" value="<?php echo  $row['description'];?>">
-        </div>
-        <div>
-            <label class="-display">Price</label>
-            <input required type="number" name="price" id="price" value="<?php echo  $row['price'];?>">
-        </div>
-        <div>
-            <label class="-display">Quantity</label>
-            <input required type="number" name="quantity" id="quantity" value="<?php echo  $row['quantity'];?>">
-        </div>
-        <div>
-            <label class="-display">Tags</label>
-            <div class="tag-container">
-              <h6>Note: Press Tab to pick tag</h6>
-              <input type="hidden" name="tags_array[]" id="tags_array"><br>
-              <input type="text" class="typeahead margin-bottom-20" placeholder="Tags here.." id="tag_input"><br>
-              <span class="tags"></span>             
+        <div class="product-edit-left">
+            <div>
+            	<input type="hidden" name="product_id" id="product_name" value="<?php echo  $row['product_id'];?>" >
+                <label class="-display">Category</label>
+                <select id="category_option" name="category_id">
+                	
+                </select>
+            </div>
+            <div>
+                <label class="-display">Product Name</label>
+                <input required type="text" name="product_name" id="product_name" value="<?php echo  $row['product_name'];?>" >
+            </div>
+            <div>
+                <label class="-display">Product Image</label>
+                <input class="product-image" type="image" src="../images/<?php echo $row['product_image']; ?>"/><br/>
+                <input type="file" name="product_image" id="product_image" size="25" value="<?php echo  $row['product_image'];?>" />
+                <input type="hidden" name="product_image" size="25" value="<?php echo  $row['product_image'];?>" />
             </div>
         </div>
-        <div>
-            <br>
-            <button type="submit" name="add_product" id="add_product">Edit Product</button>
+        <div class="product-edit-right">
+            <div>
+                <label class="-display">Description</label>
+                <input type="text" name="description" id="description" value="<?php echo  $row['description'];?>">
+            </div>
+            <div>
+                <label class="-display">Price</label>
+                <input required type="number" name="price" id="price" value="<?php echo  $row['price'];?>">
+            </div>
+            <div>
+                <label class="-display">Quantity</label>
+                <input required type="number" name="quantity" id="quantity" value="<?php echo  $row['quantity'];?>">
+            </div>
+            <div>
+                <label class="-display">Tags</label>
+                <div class="tag-container">
+                  <h6>Note: Press Tab to pick tag</h6>
+                  <input type="hidden" name="tags_array[]" id="tags_array"><br>
+                  <input type="text" class="typeahead margin-bottom-20" placeholder="Tags here.." id="tag_input"><br>
+                  <span class="tags"></span>             
+                </div>
+            </div>
+            <div>
+                <br>
+                <button type="submit" name="add_product" id="add_product">Edit Product</button>
+            </div>
         </div>
     </form>
 </div>

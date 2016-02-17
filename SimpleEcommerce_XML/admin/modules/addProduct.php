@@ -50,11 +50,11 @@ include('../../config/config.php');
 	$xml->preserveWhiteSpace = false;
 	$xml->Load('../../data/products.xml');
 
-	$sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tblproduct'";
-	$query = mysqli_query($conn, $sql);
-	$result = mysqli_fetch_row($query);
+	// $sql = "SELECT Auto_increment FROM information_schema.tables WHERE table_name='tblproduct'";
+	// $query = mysqli_query($conn, $sql);
+	// $result = mysqli_fetch_row($query);
 
-	$id = $result[0];
+	// $id = $result[0];
 	$name = $_POST['product_name'];
 	$description = $_POST['description'];
 	$quantity = $_POST['quantity'];
@@ -64,6 +64,15 @@ include('../../config/config.php');
 	$tags_array_string = $_POST['tags_array'];
 	$tags_array_id = [];
 	$tags_sql = '';
+
+
+  $stmt = $conn->prepare("INSERT INTO tblproduct (product_name,category_id,description,quantity,price,product_image) VALUES(?,?,?,?,?,?)");
+  $stmt->bind_param("ssssss",$name,$category,$description,$quantity,$price,$product_image);
+  $stmt->execute();
+
+  $id = mysqli_insert_id($conn);
+	include('../../config/config.php');
+
 
 	$tag_names = str_replace( array('[',']') , ''  , implode("','", $tags_array_string));
 	$sql = "SELECT tag_id FROM tbltag WHERE tag_name IN ({$tag_names})";
@@ -83,7 +92,6 @@ include('../../config/config.php');
 
 	//====================== XML INTEGRATION
 
-	include('../../config/config.php');
 	$new_product = $xml->createElement("product");
 	$new_product->appendChild($xml->createElement('id', $id));
 	$new_product->appendChild($xml->createElement('name', $name));
@@ -97,9 +105,6 @@ include('../../config/config.php');
 
 	$xml->Save('../../data/products.xml');
 
-  $stmt = $conn->prepare("INSERT INTO tblproduct (product_name,category_id,description,quantity,price,product_image) VALUES(?,?,?,?,?,?)");
-  $stmt->bind_param("ssssss",$name,$category,$description,$quantity,$price,$product_image);
-  $stmt->execute();
   header('Location: ../products_list.php');
   $return = Array(
   	"status" => "200",

@@ -20,4 +20,9 @@
     <name>Gadgets Category</name>
     <details>123    			</details>
   </category>
+  <category>
+    <id>24</id>
+    <name>Toys Category</name>
+    <details>categories for toys                    </details>
+  </category>
 </categories>

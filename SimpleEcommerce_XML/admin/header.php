@@ -6,3 +6,4 @@
 <link rel="stylesheet" type="text/css" href="../css/login.css">
 <link rel="stylesheet" type="text/css" href="../css/admin/admin-login.css">
 <link rel="stylesheet" type="text/css" href="../css/admin/admin-sidebar.css">
+<link rel="stylesheet" type="text/css" href="../css/admin/admin-edit-product.css">
