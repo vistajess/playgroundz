@@ -32,24 +32,26 @@ if ($result->num_rows > 0) {
     $tags_json = json_encode($json_rows);
 }
 ?>
-<body>
+<body class="admin-bg">
+<?php include('sidebar.php');?>
 <div class="container">
+    <div class="admin-content">
 	<h2>Product List</h2>
 	<a href="#addProduct">Add Product</a>
-	<table id="dataTableProducts"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Product&nbsp;Name</th>
-						<th>Product&nbsp;Image</th>
-                        <th>Description</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-		</table>
-</div>
+    	<table id="dataTableProducts"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+    		<thead>
+    			<tr>
+    				<th>ID</th>
+    				<th>Product&nbsp;Name</th>
+    				<th>Product&nbsp;Image</th>
+                    <th>Description</th>
+    				<th>Price</th>
+    				<th>Quantity</th>
+    				<th>Actions</th>
+    			</tr>
+    		</thead>
+    		</table>
+    </div>
 
 
 <!--  ADD MODAL -->

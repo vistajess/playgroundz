@@ -49,7 +49,7 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
     }
     // ResultPrinter::printResult("Get Payment", "Payment", $payment->getId(), null, $payment);
     echo 'Result Get Payment';
-    header('Location: paypal_success_transaction.php');
+    header('Location: ../paypal_success_transaction.php');
     return $payment;
 
     } else {

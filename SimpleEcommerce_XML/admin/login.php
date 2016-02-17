@@ -21,12 +21,33 @@ if (isset($_POST['login'])) {
 <head>
 	<title></title>
 </head>
-<body>
-<form name="frmUser" method="post" action="">
-	<div class="message"><?php if($message != "") { echo $message; } ?></div>
-	<input type="text" name="username">
-	<input type="password" name="password">
-	<button type="submit" name="login">Login</button>
-</form>
+<body class="admin-login-bg">
+<?php include('header.php'); ?>
+
+	<div class="admin-login"  style="position: relative;height:100%">
+		<div class="container">
+				<div class=" panel center admin-login-panel">
+						<div class="panel-header">
+							ADMIN LOGIN
+						</div>
+						<div class="panel-body">
+							<form name="frmUser" method="post" action="">
+								<div class="user-login">
+									<div class="form-group">
+										<i class="fa fa-user"></i> <input type="text" placeholder="Username" name="username">
+									</div>
+									<div class="form-group">
+										<i class="fa fa-lock"></i> <input type="password" placeholder="Password" name="password">
+									</div>
+									<div class="form-group">
+										<button type="submit" name="login">Login</button>
+									</div>
+									<div class="message"><?php if($message != "") { echo $message; } ?></div>
+								</div>
+							</form>
+						</div>
+				</div>
+		</div>
+	</div>	
 </body>
 </html>

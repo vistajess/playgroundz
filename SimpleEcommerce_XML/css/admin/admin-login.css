@@ -1,0 +1,25 @@
+.admin-login-bg {
+	background: url('../../images/header.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.admin-bg {
+	background: url('../../images/admin.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.admin-login-panel {
+	float: right;
+  position: relative;
+  top: 220px;
+}
+
+.admin-content {
+  width: 900px;
+  margin-left: 210px;
+  padding-top: 135px;
+  position: relative;
+  z-index: 0;
+  padding-bottom: 50px;
+}

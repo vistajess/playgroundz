@@ -2,6 +2,16 @@ a {
   text-decoration: none;
 }
 
+.center {
+  margin: 0px auto;
+}
+
+.position-center {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
 .cart-indicator {
   position: absolute;
   background: #999;
@@ -108,6 +118,8 @@ a {
   font-size: 15px;
   border-radius: 10px;
 }
+
+
 
 
 /* =======================SKELETON================================= */

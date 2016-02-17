@@ -9,30 +9,13 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 <html>
 <head>
 	<title>User Dashboard</title>
+	<?php include('header.php'); ?>
 </head>
-<body>
+<body class="admin-bg">
 Welcome <?php echo $_SESSION["username"]; ?>
-<a href="logout.php">Logout</a>
-<div class="side-bar">
-	<ul class="links">
-		<li>
-			<a href="usertype_list.php">User Type</a>
-		</li>
-		<li>
-			<a href="">Users</a>
-		</li>
-		<li>
-			<a href="category_list.php">Categories</a>
-		</li>
-		<li>
-			<a href="tag_list.php">Tags</a>
-		</li>
-		<li>
-			<a href="products_list.php">Products</a>
-		</li>
-	</ul>
+<?php include('sidebar.php');?>
+<div class="container">
+
 </div>
-
-
 </body>
 </html>

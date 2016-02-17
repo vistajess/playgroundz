@@ -1,5 +1,5 @@
 <?php
-
+// echo json_encode($_SERVER); die();
 require 'paypalStart.php';
 use PayPal\Api\Item;
 use PayPal\Api\ItemList;
@@ -29,20 +29,20 @@ foreach ($cart_array as $key => $cart_item) {
     $shopping_list[] = $item;
 //UPDATE THE PRODUCT QUANTITY
 }
-//===================================
-// $item1 = new Item();
-// $item1->setName('Ground Coffee 40 oz')
-//     ->setCurrency('USD')
-//     ->setQuantity(1)
-//     ->setSku("123123") // Similar to `item_number` in Classic API
-//     ->setPrice(100);
-// $item2 = new Item();
-// $item2->setName('Granola bars')
-//     ->setCurrency('USD')
-//     ->setQuantity(1)
-//     ->setSku("321321") // Similar to `item_number` in Classic API
-//     ->setPrice(100);
-// print_r($shopping_list);die();
+
+function getBaseUrl() {
+    // output: /myproject/index.php
+    $currentPath = $_SERVER['PHP_SELF']; 
+    // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index ) 
+    $pathInfo = pathinfo($currentPath); 
+    // output: localhost
+    $hostName = $_SERVER['HTTP_HOST']; 
+    // output: http://
+    $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
+    // return: http://localhost/myproject/
+    return $protocol.$hostName.$pathInfo['dirname']."/";
+}
+
 $itemList = new ItemList();
 // $itemList->setItems(array($item1, $item2));
 $itemList->setItems($shopping_list);
@@ -67,9 +67,16 @@ $transaction->setAmount($amount)
 
 
 $redirectUrls = new RedirectUrls();
+// echo getBaseUrl()."executePaypalPayment.php?success=true";die();
 // $redirectUrls->setReturnUrl('http://localhost:5050/modules/executePaypalPayment.php?success=true')
+// echo "http://".$_SERVER['HTTP_HOST']."/modules/executePaypalPayment.php?success=true"; die();
+// $redirectUrls->setReturnUrl(getBaseUrl()."/modules/executePaypalPayment.php?success=true")
 $redirectUrls->setReturnUrl("http://".$_SERVER['HTTP_HOST']."/modules/executePaypalPayment.php?success=true")
     ->setCancelUrl("http://".$_SERVER['HTTP_HOST']."/modules/executePaypalPayment.php?success=false");
+
+
+// $redirectUrls->setReturnUrl("http://".$_SERVER['HTTP_HOST']."/modules/executePaypalPayment.php?success=true")
+//     ->setCancelUrl("http://".$_SERVER['HTTP_HOST']."/modules/executePaypalPayment.php?success=false");
 
 $payment = new Payment();
 $payment->setIntent("sale")
