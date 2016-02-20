@@ -1,23 +1,41 @@
 <?php
 
-function watermarkImage ($SourceFile, $WaterMarkText, $DestinationFile) { 
-   list($width, $height) = getimagesize($SourceFile);
-   $image_p = imagecreatetruecolor($width, $height);
-   $image = imagecreatefromjpeg($SourceFile);
-   imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width, $height); 
-   $black = imagecolorallocate($image_p, 0, 0, 0);
-   $font = 'arial.ttf';
-   $font_size = 10; 
-   imagettftext($image_p, $font_size, 0, 10, 20, $black, $font, $WaterMarkText);
-   if ($DestinationFile<>'') {
-      imagejpeg ($image_p, $DestinationFile, 100); 
-   } else {
-      header('Content-Type: image/jpeg');
-      imagejpeg($image_p, null, 100);
-   };
-   imagedestroy($image); 
-   imagedestroy($image_p); 
-};
+// Function to add image watermark
+function watermarkImage($SourceFile, $WaterMark, $DestinationFile=NULL, $opacity) { 
+
+ $main_img = $SourceFile; 
+ $watermark_img = $WaterMark; 
+ $padding = 3; 
+ $opacity = $opacity; 
+
+ $watermark = imagecreatefromgif($watermark_img); // create watermark
+ $image = imagecreatefromjpeg($main_img); // create main graphic
+
+ if(!$image || !$watermark) die("Error: main image or watermark could not be loaded!");
+
+ $watermark_size = getimagesize($watermark_img);
+ $watermark_width = $watermark_size[0]; 
+ $watermark_height = $watermark_size[1]; 
+
+ $image_size = getimagesize($main_img); 
+ $dest_x = $image_size[0] - $watermark_width - $padding; 
+ $dest_y = $image_size[1] - $watermark_height - $padding;
+
+ // copy watermark on main image
+ imagecopymerge($image, $watermark, $dest_x, $dest_y, 0, 0, $watermark_width, $watermark_height, $opacity);
+ if ($DestinationFile<>'') {
+  imagejpeg($image, $DestinationFile, 100); 
+ } 
+ else {
+   header('Content-Type: image/jpeg');
+   imagejpeg($image);
+ }
+ imagedestroy($image); 
+ imagedestroy($watermark); 
+}
+
+
+
 
 if($_FILES['product_image']['name']){
 	//if no errors...
@@ -38,6 +56,9 @@ if($_FILES['product_image']['name']){
 		if($valid_file)
 		{
 			//move it to where we want it to be
+
+      $WaterMark = '../../images/watermark.gif';
+      watermarkImage ($new_file_name, $WaterMark, $new_file_name, 50);
 			$currentdir = getcwd();
 			$target = '../../images/' . basename($_FILES['product_image']['name']);
 			move_uploaded_file($_FILES['product_image']['tmp_name'], $target);

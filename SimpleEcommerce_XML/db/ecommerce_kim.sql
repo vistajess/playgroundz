@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2016 at 04:43 PM
+-- Generation Time: Feb 20, 2016 at 05:38 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -71,7 +71,8 @@ INSERT INTO `tblproduct` (`product_id`, `product_name`, `category_id`, `descript
 (41, 'Go Pro', '23', 'gopro', 20, 5000, 'gopro.jpg'),
 (42, 'cell phone', '23', 'cell phone', 5, 3000, 'cp.jpg'),
 (43, 'Nike Flyknit', '21', 'sneakers', 20, 5000, 'nike.jpg'),
-(44, 'Apparel', '21', 'qwe', 120, 300, 'apparel.jpg');
+(44, 'Apparel', '21', 'qwe', 120, 300, 'apparel.jpg'),
+(46, 'Gadget with Water Mark', '21', 'watermarked', 3, 2, 'rubix.jpg');
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,8 @@ INSERT INTO `tblproduct_tag` (`id`, `product_id`, `tag_id`, `category_id`) VALUE
 (109, '43', '46', 21),
 (110, '44', '45', 21),
 (111, '44', '46', 21),
-(112, '44', '47', 21);
+(112, '44', '47', 21),
+(115, '46', '34', 21);
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,10 @@ INSERT INTO `tbluser` (`userID`, `username`, `userpass`, `firstName`, `middleNam
 (5, 'guest', 'guest', 'guest', 'guest', 'guest', '00000000005', 'guest@yahoo.com', NULL, 3, '1920-10-13'),
 (7, 'guest', 'joyjoy', 'joy', 'Aquino', 'Aquino', '00000000007', 'joy@gmail.com', NULL, 3, '2015-10-03'),
 (9, 'guest', 'chibi', 'chibi', 'chibi', 'chibi', '00000000011', 'chibi@yahoo.com', NULL, 3, '2016-02-23'),
-(10, 'guest', 'qweqwe', 'jess', 'bernarte', 'vista', 'qwe', 'vistajesus8@gmail.com', NULL, 3, '1990-03-31');
+(10, 'guest', 'qweqwe', 'jess', 'bernarte', 'vista', 'qwe', 'vistajesus8@gmail.com', NULL, 3, '1990-03-31'),
+(12, 'guest', '123123123', '123', '123', '123', '123123123', 'root@email.com', NULL, 3, '0021-02-22'),
+(13, 'guest', '123123', 'asd', 'asd', 'asd', '123123', 'root@email.com2', NULL, 3, '0002-02-22'),
+(14, 'guest', '123123', 'qwewqe', 'qweqqwe', 'qweqwe', '123123', 'root123123@email.com', NULL, 3, '0002-02-22');
 
 -- --------------------------------------------------------
 
@@ -301,12 +306,12 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `tblproduct_tag`
 --
 ALTER TABLE `tblproduct_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 --
 -- AUTO_INCREMENT for table `tbltag`
 --
@@ -316,7 +321,7 @@ ALTER TABLE `tbltag`
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbluser_type`
 --

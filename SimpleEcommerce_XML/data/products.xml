@@ -81,4 +81,13 @@
     <image>apparel.jpg</image>
     <category>21</category>
   </product>
+  <product>
+    <id>46</id>
+    <name>Gadget with Water Mark</name>
+    <description>watermarked</description>
+    <quantity>3</quantity>
+    <price>2</price>
+    <image>rubix.jpg</image>
+    <category>21</category>
+  </product>
 </products>
