@@ -13,8 +13,8 @@ include('header.php');
 <?php include('sidebar.php');?>
 <div class="container">
     <div class="admin-content">
-    	<h2>Tags List</h2>
-    	<a href="#addTagModal">Add Tag</a>
+    	<h2>Tags List <a class="custom-btn" href="#addTagModal">Add Tag</a></h2>
+    	
     	<table id="dataTableTag"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
     				<thead>
     					<tr>

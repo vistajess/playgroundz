@@ -15,6 +15,9 @@
 		<li>
 			<a class="sidebar-links" href="products_list.php">Products</a>
 		</li>
+	  <li>
+			<a class="sidebar-links" href="transactions.php">Transactions</a>
+		</li>
 		<li>
 			<a class="sidebar-links" href="logout.php">Logout</a>
 		</li>

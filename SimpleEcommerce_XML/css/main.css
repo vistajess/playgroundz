@@ -120,7 +120,21 @@ a {
 }
 
 
-
+.custom-btn {
+    background: #7E99D6;
+    color: #fff;
+    padding: 7px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s linear;
+    border-radius: 5px;
+    width: 150px;
+    font-size: 17px;
+    text-align: center;
+    float: right;
+}
 
 /* =======================SKELETON================================= */
 html,
@@ -152,5 +166,6 @@ body {
     z-index: 10;
     background: #fff;
     padding: 15px;
+    box-sizing: border-box;
 }
 /*=================*/

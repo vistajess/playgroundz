@@ -107,7 +107,7 @@ $('body').on('click','#cod_pay', function() {
 			var products = cart_items.map(function(cart) {return cart.product_id;});
 			var dataObj = {
 				"user_id" : user_id,
-				"payment_method" : 'cod',
+				"payment_method" : 'Cash On Delivery',
 				"transaction_id" : $('#transaction_id').val(),
 				"shipping_address" : $('#shipping_address').val(),
 				"shipping_contact_number" : $('#shipping_contact_number').val(),

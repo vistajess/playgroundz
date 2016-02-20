@@ -11,8 +11,8 @@ include('header.php');
 <?php include('sidebar.php');?>
 <div class="container">
     <div class="admin-content">
-        <h2>Category List</h2>
-        <a href="#addCategory">Add Category</a>
+        <h2>Category List <a class="custom-btn" href="#addCategory">Add Category</a></h2>
+        
         <br>
         <table id="dataTableCategory"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
                 <thead>

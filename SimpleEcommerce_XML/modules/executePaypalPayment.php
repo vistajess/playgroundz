@@ -51,7 +51,7 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
     echo 'Result Get Payment';
 
     include('../config/config.php');
-    $payment_method = 'paypal';
+    $payment_method = 'Paypal Transaction';
     $user_id = $_COOKIE['user_id'];
     $transaction_id = $_GET['paymentId'];
     $shipping_address = $_COOKIE['shipping_address'];

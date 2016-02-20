@@ -12,8 +12,8 @@ include('header.php');
 <?php include('sidebar.php');?>
 <div class="container">
     <div class="admin-content">
-	<h2>User Type List</h2>
-	<a href="#addUserType">Add User Type</a>
+	<h2>User Type List <a class="custom-btn" href="#addUserType">Add User Type</a></h2>
+	
 	<table id="dataTableUserType"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
 				<thead>
 					<tr>
