@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2016 at 08:20 PM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Generation Time: Feb 20, 2016 at 04:43 PM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `tblcategory`
 --
 
-CREATE TABLE IF NOT EXISTS `tblcategory` (
+CREATE TABLE `tblcategory` (
   `category_id` int(4) NOT NULL,
   `category_name` varchar(250) NOT NULL,
   `category_details` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcategory`
@@ -48,7 +48,7 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_details`) V
 -- Table structure for table `tblproduct`
 --
 
-CREATE TABLE IF NOT EXISTS `tblproduct` (
+CREATE TABLE `tblproduct` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(250) NOT NULL,
   `category_id` varchar(20) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `tblproduct` (
   `quantity` int(10) NOT NULL,
   `price` int(250) NOT NULL,
   `product_image` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblproduct`
@@ -79,12 +79,12 @@ INSERT INTO `tblproduct` (`product_id`, `product_name`, `category_id`, `descript
 -- Table structure for table `tblproduct_tag`
 --
 
-CREATE TABLE IF NOT EXISTS `tblproduct_tag` (
+CREATE TABLE `tblproduct_tag` (
   `id` int(11) NOT NULL,
   `product_id` varchar(300) NOT NULL,
   `tag_id` varchar(300) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblproduct_tag`
@@ -125,10 +125,10 @@ INSERT INTO `tblproduct_tag` (`id`, `product_id`, `tag_id`, `category_id`) VALUE
 -- Table structure for table `tbltag`
 --
 
-CREATE TABLE IF NOT EXISTS `tbltag` (
+CREATE TABLE `tbltag` (
   `tag_id` int(6) NOT NULL,
   `tag_name` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbltag`
@@ -156,7 +156,7 @@ INSERT INTO `tbltag` (`tag_id`, `tag_name`) VALUES
 -- Table structure for table `tbluser`
 --
 
-CREATE TABLE IF NOT EXISTS `tbluser` (
+CREATE TABLE `tbluser` (
   `userID` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `userpass` varchar(20) NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `tbluser` (
   `address` varchar(100) DEFAULT NULL,
   `userTypeID` int(11) NOT NULL,
   `birthdate` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluser`
@@ -180,12 +180,9 @@ INSERT INTO `tbluser` (`userID`, `username`, `userpass`, `firstName`, `middleNam
 (3, 'frontdesk', 'frontdesk', 'Kim', NULL, 'Aquino', '00000000003', 'frontdesk@ymail.com', NULL, 2, '2014-09-03'),
 (4, 'guest', 'VanElla', 'Kim', 'Aquino', 'Aquino', '00000000004', 'kimmy@yahoo.com', NULL, 3, '1930-10-14'),
 (5, 'guest', 'guest', 'guest', 'guest', 'guest', '00000000005', 'guest@yahoo.com', NULL, 3, '1920-10-13'),
-(6, 'guest', 'rizal', 'Jose', 'Protacio', 'Rizal', '00000000006', 'joserizal@yahoo.com', NULL, 3, '1990-09-02'),
 (7, 'guest', 'joyjoy', 'joy', 'Aquino', 'Aquino', '00000000007', 'joy@gmail.com', NULL, 3, '2015-10-03'),
-(8, 'guest', 'kevin', 'kevin', 'garchi', 'cipriano', '00000000008', 'kevin@yahoo.com', NULL, 3, '1996-07-27'),
 (9, 'guest', 'chibi', 'chibi', 'chibi', 'chibi', '00000000011', 'chibi@yahoo.com', NULL, 3, '2016-02-23'),
-(10, 'guest', 'qweqwe', 'jess', 'bernarte', 'vista', 'qwe', 'vistajesus8@gmail.com', NULL, 3, '1990-03-31'),
-(11, 'guest', 'qweqwe', 'qwe', 'qwe', 'qwe', '123', 'admin@email.com', NULL, 3, '0222-02-02');
+(10, 'guest', 'qweqwe', 'jess', 'bernarte', 'vista', 'qwe', 'vistajesus8@gmail.com', NULL, 3, '1990-03-31');
 
 -- --------------------------------------------------------
 
@@ -193,10 +190,10 @@ INSERT INTO `tbluser` (`userID`, `username`, `userpass`, `firstName`, `middleNam
 -- Table structure for table `tbluser_type`
 --
 
-CREATE TABLE IF NOT EXISTS `tbluser_type` (
+CREATE TABLE `tbluser_type` (
   `user_type_id` int(11) NOT NULL,
   `type_name` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluser_type`
@@ -215,7 +212,7 @@ INSERT INTO `tbluser_type` (`user_type_id`, `type_name`) VALUES
 -- Table structure for table `tbl_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_transaction` (
+CREATE TABLE `tbl_transaction` (
   `id` int(11) NOT NULL,
   `user_id` varchar(11) NOT NULL,
   `payment_method` varchar(200) NOT NULL,
@@ -224,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `tbl_transaction` (
   `transaction_date` datetime NOT NULL,
   `shipping_address` varchar(200) NOT NULL,
   `shipping_contact_number` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_transaction`
@@ -241,7 +238,8 @@ INSERT INTO `tbl_transaction` (`id`, `user_id`, `payment_method`, `transaction_i
 (9, '2', 'cod', '9', 800.00, '2016-02-16 17:42:07', '12313', '123123'),
 (10, '2', 'cod', '10', 360.00, '2016-02-16 17:45:12', '', ''),
 (11, '2', 'cod', '11', 800.00, '2016-02-16 17:46:17', 'qweqwe', 'qweqwe'),
-(12, '2', 'cod', '11', 800.00, '2016-02-16 17:46:36', 'qweqwe', 'qweqwe');
+(12, '2', 'cod', '11', 800.00, '2016-02-16 17:46:36', 'qweqwe', 'qweqwe'),
+(13, '2', 'paypal', 'PAY-13U97779CB724525FK3EEILQ', 122.50, '2016-02-20 11:50:09', 'address', '123');
 
 --
 -- Indexes for dumped tables
@@ -298,37 +296,37 @@ ALTER TABLE `tbl_transaction`
 -- AUTO_INCREMENT for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-  MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `tblproduct_tag`
 --
 ALTER TABLE `tblproduct_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 --
 -- AUTO_INCREMENT for table `tbltag`
 --
 ALTER TABLE `tbltag`
-  MODIFY `tag_id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
+  MODIFY `tag_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbluser_type`
 --
 ALTER TABLE `tbluser_type`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

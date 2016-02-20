@@ -4,7 +4,7 @@
 			<a class="sidebar-links" href="usertype_list.php">User Type</a>
 		</li>
 		<li>
-			<a class="sidebar-links" href="#">Users</a>
+			<a class="sidebar-links" href="user_list.php">Users</a>
 		</li>
 		<li>
 			<a class="sidebar-links" href="category_list.php">Categories</a>
