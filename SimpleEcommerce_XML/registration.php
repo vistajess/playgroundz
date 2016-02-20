@@ -45,7 +45,7 @@
 			mysqli_query($conn, "INSERT INTO tblUser (firstName, middleName, lastName, contactNo, email, userPass, userTypeID, userName, birthdate) 
 						  VALUES ('$firstName', '$middleName', '$lastName', '$contact', '$email1', '$password1', '3', 'guest', '$birthdate')");
 
-			$registerMessage = "Your have successfully created a new account.";
+			$registerMessage = "Your have successfully created a new account.<br><a href='index.php'>Log In </a>";
 			$_SESSION['registerMessage'] = $registerMessage;
 		}
 		// header('Location: /index.php/#login');
@@ -58,8 +58,10 @@
 <head>
 	<title></title>
 </head>
-<body>
-<form id = "registerForm" action = <?php echo $_SERVER['PHP_SELF'] ?> method = "POST">
+<body class="register-wrapper">
+<?php include('header_links.php'); ?>
+<div>
+		<form id = "registerForm" action = <?php echo $_SERVER['PHP_SELF'] ?> method = "POST">
 					<table>
 						<tr>
 							<td class = "label"> <label for = "firstName"> First Name </label> </td>
@@ -118,6 +120,6 @@
 						?>
 					</center>
 				</form>
-
+</div>
 </body>
 </html>

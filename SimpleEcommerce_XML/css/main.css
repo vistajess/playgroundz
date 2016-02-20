@@ -2,6 +2,20 @@ a {
   text-decoration: none;
 }
 
+#registerForm {
+ text-align: center;
+  width: 600px;
+  margin: 200px auto 0px;
+}
+
+.register-wrapper {
+  background: url('../images/admin.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
 .center {
   margin: 0px auto;
 }
@@ -149,8 +163,8 @@ body {
 
 .content-wrapper {
   background: #DD6E41;
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
 }
 .content {
     padding-bottom: 100px;
