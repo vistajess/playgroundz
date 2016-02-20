@@ -47,7 +47,8 @@ if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
 
 	<div class="footer">
 		<div class="container">
-			FOOTER
+Copyright © 2016 cakesNbread All rights reserved
+			For more info, email us at: cakesnbread2016@ymail.com
 		</div>
 	</div>
 </div>

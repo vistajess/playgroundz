@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>THIS IS THE WELCOME PAGE</title>
+	<title>Cakes N Bread</title>
 <?php include('header_links.php'); ?>
 
 </head>
@@ -62,7 +62,8 @@ if (isset($_POST['login'])) {
 
 	<div class="footer">
 		<div class="container">
-			FOOTER
+			Copyright © 2016 cakesNbread All rights reserved
+			For more info, email us at: cakesnbread2016@ymail.com
 		</div>
 	</div>
 </div>

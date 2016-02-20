@@ -115,15 +115,14 @@ $('body').on('click','#cod_pay', function() {
 			 $.ajax({
 		      type: "POST",
 		      dataType: "json",
-		      url: '../modules/codPay.php',
+		      url: 'modules/codPay.php',
 		      data: dataObj,
 		      beforeSend: function(xhr, opts) {
-		      	console.log('be');
 		      	$('#cod_pay').html('<i class="fa fa-spinner fa-spin"></i> Processing...');
 		      },
 		      success: function(data) {
 		      	document.cookie = 'cart=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-		      	// window.location.href = "../cod_success_transaction.php";
+		      	window.location.href = "cod_success_transaction.php";
 		      },
 		      error: function(xhr, status, error) {
 		      }
