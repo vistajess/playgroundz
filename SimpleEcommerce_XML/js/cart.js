@@ -28,7 +28,7 @@ function renderItems(array) {
   $('#shopping-cart-details').html('');
   var template = '<div class="total text-right">TOTAL:    '+grand_total+'</div>\
   								<div class="payment-btn"> \
-  										<button type="button" id="paypal_payment" class="paypal"> </button> \
+  										<a href="#paypalPayment" id="paypal_payment_modal" class="paypal"> </a> \
   										<a class="cod" id="cod_payment" href="#codPayment">Cash On Delivery </a> \
   								</div>';
   $('#shopping-cart-details').append(template);
@@ -99,6 +99,10 @@ $('body').on('click','#cod_payment', function() {
 	$('#cod_total').val(grand_total);
 });
 
+$('body').on('click','#paypal_payment_modal', function() {
+	$('#paypal_total').val(grand_total);
+});
+
 $('body').on('click','#cod_pay', function() {
 			var products = cart_items.map(function(cart) {return cart.product_id;});
 			var dataObj = {
@@ -131,10 +135,13 @@ $('body').on('click','#cod_pay', function() {
 
 
 $('body').on('click','#paypal_payment', function() {
-			var products = cart_items.map(function(cart) {return cart.product_id;});
+	 		var products = cart_items.map(function(cart) {return cart.product_id;});
 			var dataObj = {
 				"cart" : JSON.stringify(cart_items),
-				"grand_total" : grand_total
+				"grand_total" : grand_total,
+				"shipping_address" : $('#shipping_address_paypal').val(),
+				"shipping_contact_number" : $('#shipping_contact_number_paypal').val(),
+				"user_id" : user_id
 			};
 			console.log(dataObj);
 		 	dataObj = $(this).serialize() + "&" + $.param(dataObj);

@@ -15,6 +15,8 @@ $payer->setPaymentMethod("paypal");
 //===================================
 $cart_paypal = $_COOKIE['cart_paypal'];
 $cart_total = $_COOKIE['grand_total'];
+$shipping_address = $_COOKIE['shipping_address'];
+$shipping_contact_number = $_COOKIE['shipping_contact_number'];
 
   // Convert JSON string to Array
 $shopping_list = array();

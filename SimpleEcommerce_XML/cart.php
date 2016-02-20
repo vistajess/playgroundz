@@ -112,6 +112,28 @@ if ($result->num_rows > 0) {
     		</div>
     </div>
 </div>
+
+<!--  Paypal PAYMENT -->
+<div id="paypalPayment" class="modalDialog">
+    <div>	<a href="#close" title="Close" class="close">X</a>
+    	<h2>Paypal Method</h2>
+    		<div>
+    		 	<label class="-display">Total Amount</label>
+    		 	<input type="text" id="paypal_total" disabled name="cod_total" value="">
+    		</div>
+    		<div>
+    		 	<label class="-display">Shipping Address: </label>
+    		 	<input type="text" id="shipping_address_paypal" name="pay_amount" value="">
+    		</div>
+    		<div>
+    		 	<label class="-display">Shipping Contact Number: </label>
+    		 	<input type="text" id="shipping_contact_number_paypal" name="pay_amount" value="">
+    		</div>
+    		<div>
+    			<button type="button" id="paypal_payment" name="cod_pay" class="cod_pay">Pay</button>
+    		</div>
+    </div>
+</div>
 <?php include('footer.php'); ?>
 </body>
 <script type="text/javascript">

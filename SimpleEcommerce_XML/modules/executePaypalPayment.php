@@ -49,6 +49,18 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
     }
     // ResultPrinter::printResult("Get Payment", "Payment", $payment->getId(), null, $payment);
     echo 'Result Get Payment';
+
+    include('../config/config.php');
+    $payment_method = 'paypal';
+    $user_id = $_COOKIE['user_id'];
+    $transaction_id = $_GET['paymentId'];
+    $shipping_address = $_COOKIE['shipping_address'];
+    $shipping_contact_number = $_COOKIE['shipping_contact_number'];
+    $date_time = date('Y-m-d H:i:s');
+    $stmt = $conn->prepare("INSERT INTO tbl_transaction (user_id,payment_method,transaction_id,total_amount,transaction_date,shipping_address,shipping_contact_number) VALUES (?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssss",$user_id,$payment_method,$transaction_id,$total,$date_time,$shipping_address,$shipping_contact_number);
+    $stmt->execute();
+
     header('Location: ../paypal_success_transaction.php');
     return $payment;
 
