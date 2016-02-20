@@ -11,6 +11,7 @@ $columns = array(
   1 => 'transaction_date',
   2 => 'payment_method',
   3 => 'transaction_id',
+  4 => 'total_amount',
 );
 
 // getting total number records without any search
@@ -41,6 +42,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
   $nestedData[] = $row["transaction_date"];
   $nestedData[] = $row["payment_method"];
   $nestedData[] = $row["transaction_id"];
+  $nestedData[] = $row["total_amount"];
   
   $data[] = $nestedData;
 }

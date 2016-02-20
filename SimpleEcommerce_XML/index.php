@@ -4,7 +4,7 @@ session_start();
 
 $message = "";
 if (isset($_POST['login'])) {
-	$result = mysqli_query($conn,"SELECT * FROM tbluser WHERE username='" . $_POST["username"] . "' and userpass = '". $_POST["password"]."'");
+	$result = mysqli_query($conn,"SELECT * FROM tbluser WHERE email='" . $_POST["email"] . "' and userpass = '". $_POST["password"]."'");
 	$row  = mysqli_fetch_array($result);
 	if(is_array($row) && $row['userTypeID'] === '3' ) {
 		$_SESSION["username"] = $row['username'];
@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
 							<form name="frmUser" method="post" action="">
 								<div class="user-login">
 									<div class="form-group">
-										<i class="fa fa-user"></i> <input type="text" placeholder="Username" name="username">
+										<i class="fa fa-user"></i> <input type="text" placeholder="Email Address" name="email">
 									</div>
 									<div class="form-group">
 										<i class="fa fa-lock"></i> <input type="password" placeholder="Password" name="password">

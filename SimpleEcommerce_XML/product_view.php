@@ -13,6 +13,7 @@ if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
 	// $query = "SELECT * FROM tblproduct WHERE product_id ='".$product_id."'";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_assoc($result);
+
 };
 ?>
 <!DOCTYPE html>

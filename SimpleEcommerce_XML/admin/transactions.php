@@ -13,7 +13,7 @@ include('header.php');
 <?php include('sidebar.php');?>
 <div class="container">
     <div class="admin-content">
-      <h2>Transaction List <a class="custom-btn" href="#">Generate Report</a></h2>
+      <h2>Transaction List <a class="custom-btn" href="generateTransactionReport.php">Generate Report</a></h2>
       <table id="dataTableTransaction"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
         <thead>
           <tr>
@@ -21,6 +21,7 @@ include('header.php');
             <th> Date </th>
             <th>Payment Method</th>
             <th>Transaction Number</th>
+            <th>Amount</th>
           </tr>
         </thead>
       </table>
