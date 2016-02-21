@@ -58,7 +58,7 @@ if($_FILES['product_image']['name']){
 			//move it to where we want it to be
 
       $WaterMark = '../../images/watermark.gif';
-      watermarkImage ($new_file_name, $WaterMark, $new_file_name, 50);
+      watermarkImage ($_FILES['product_image']['tmp_name'], $WaterMark, $_FILES['product_image']['tmp_name'], 50);
 			$currentdir = getcwd();
 			$target = '../../images/' . basename($_FILES['product_image']['name']);
 			move_uploaded_file($_FILES['product_image']['tmp_name'], $target);

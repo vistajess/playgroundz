@@ -64,4 +64,8 @@
     <id>48</id>
     <name>sample</name>
   </tag>
+  <tag>
+    <id>48</id>
+    <name>watermark</name>
+  </tag>
 </tags>

@@ -90,4 +90,22 @@
     <image>rubix.jpg</image>
     <category>21</category>
   </product>
+  <product>
+    <id>47</id>
+    <name>sample</name>
+    <description>ww</description>
+    <quantity>3</quantity>
+    <price>2</price>
+    <image>gadget.jpg</image>
+    <category>21</category>
+  </product>
+  <product>
+    <id>48</id>
+    <name>asd</name>
+    <description>2</description>
+    <quantity>1</quantity>
+    <price>4</price>
+    <image>gadget.jpg</image>
+    <category>21</category>
+  </product>
 </products>
