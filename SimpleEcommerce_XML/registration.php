@@ -20,7 +20,8 @@
 		$birthdate = $_POST['birthdate'];
 
 		if(isset($_POST['contact']))
-			$contact = $_POST['contact'];
+		$contact = $_POST['contact'];
+		$address = $_POST['address'];
 
 		$captcha1 = $_SESSION['captcha'];
 		$captcha2 = $_POST['captcha'];
@@ -42,9 +43,31 @@
 		}
 		
 		if(!isset($registerMessage)) {
-			mysqli_query($conn, "INSERT INTO tblUser (firstName, middleName, lastName, contactNo, email, userPass, userTypeID, userName, birthdate) 
-						  VALUES ('$firstName', '$middleName', '$lastName', '$contact', '$email1', '$password1', '3', 'guest', '$birthdate')");
+			mysqli_query($conn, "INSERT INTO tblUser (firstName, middleName, lastName, contactNo, email, userPass, userTypeID, userName, birthdate, address) 
+						  VALUES ('$firstName', '$middleName', '$lastName', '$contact', '$email1', '$password1', '3', 'guest', '$birthdate' , '$address')");
 
+			$id = mysqli_insert_id($conn);
+			// CREATE AN XML DATA
+
+			$xml = new  DOMDocument("1.0", "utf-8");
+			$xml->formatOutput = true;
+			$xml->preserveWhiteSpace = false;
+			$xml->Load('data/users.xml');
+
+			$new_user = $xml->createElement("user");
+			$new_user->appendChild($xml->createElement('id', $id));
+			$new_user->appendChild($xml->createElement('firstname', $firstName));
+			$new_user->appendChild($xml->createElement('middlename', $middleName));
+			$new_user->appendChild($xml->createElement('lastname', $lastName));
+			$new_user->appendChild($xml->createElement('contact', $contact));
+			$new_user->appendChild($xml->createElement('address', $address));
+			$new_user->appendChild($xml->createElement('email', $email1));
+			$new_user->appendChild($xml->createElement('birthdate', $birthdate));
+
+			$xml->getElementsByTagName('users')->item(0)->appendChild($new_user);
+
+			$xml->Save('data/users.xml');
+			// =============================
 			$registerMessage = "Your have successfully created a new account.<br><a href='index.php'>Log In </a>";
 			$_SESSION['registerMessage'] = $registerMessage;
 		}
@@ -74,11 +97,16 @@
 							<td> <input type = "text" name = "middleName" id = "middleName" /> </td>
 							<td> <input type = "text" name = "lastName" id = "lastName" required = "required"/> </td>
 						</tr>
+						<tr >
+							<td class = "label" colspan = "3"> <label for = "address">  Address </label> </td>
+						</tr>
+						<tr >
+							<td colspan = "3"> <input type = "text" name = "address" id = "address" style = "width: 530px;" required = "required"/> </td>
+						</tr>
 
 						<tr>
 							<td class = "label" colspan = "2"> <label for = "email"> Email Address </label> </td>
 							<td class = "label"> <label for = "password1"> Password </label> </td>
-							
 						</tr>
 						<tr>
 							<td colspan = "2"> <input type = "email" name = "email" id = "email" style = "width: 350px;" required = "required"/> </td>

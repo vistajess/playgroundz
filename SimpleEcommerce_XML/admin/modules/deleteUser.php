@@ -20,21 +20,21 @@ if ($stmt = $conn->prepare("DELETE FROM tbluser WHERE userID = ? LIMIT 1")) {
   echo json_encode($return);
 
 // delete to XML FILE
-  // $xml = new DOMDocument("1.0", "utf-8");
-  // $xml->formatOutput = true;
-  // $xml->preserveWhiteSpace = false;
-  // $xml->Load('../../data/tags.xml');
+  $xml = new DOMDocument("1.0", "utf-8");
+  $xml->formatOutput = true;
+  $xml->preserveWhiteSpace = false;
+  $xml->Load('../../data/users.xml');
 
-  // $root = $xml->getElementsByTagName('tags')->item(0);
-  // $tags = $root->getElementsByTagName('tag'); 
+  $root = $xml->getElementsByTagName('users')->item(0);
+  $users = $root->getElementsByTagName('user'); 
 
-  // foreach ($tags as $tag) {
-  //   $current_id = $tag->getElementsByTagName('id')->item(0)->nodeValue;
+  foreach ($users as $user) {
+    $current_id = $user->getElementsByTagName('id')->item(0)->nodeValue;
 
-  //   if($current_id == $id) 
-  //     $root->removeChild($tag);
-  // }
-  // $xml->Save('../../data/tags.xml');
+    if($current_id == $id) 
+      $root->removeChild($user);
+  }
+  $xml->Save('../../data/users.xml');
 
 }
 else

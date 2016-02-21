@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2016 at 05:38 PM
+-- Generation Time: Feb 21, 2016 at 04:20 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -72,7 +72,9 @@ INSERT INTO `tblproduct` (`product_id`, `product_name`, `category_id`, `descript
 (42, 'cell phone', '23', 'cell phone', 5, 3000, 'cp.jpg'),
 (43, 'Nike Flyknit', '21', 'sneakers', 20, 5000, 'nike.jpg'),
 (44, 'Apparel', '21', 'qwe', 120, 300, 'apparel.jpg'),
-(46, 'Gadget with Water Mark', '21', 'watermarked', 3, 2, 'rubix.jpg');
+(46, 'Gadget with Water Mark', '21', 'watermarked', 3, 2, 'rubix.jpg'),
+(47, 'sample', '21', 'ww', 3, 2, 'gadget.jpg'),
+(48, 'asd', '21', '2', 1, 4, 'gadget.jpg');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,9 @@ INSERT INTO `tblproduct_tag` (`id`, `product_id`, `tag_id`, `category_id`) VALUE
 (110, '44', '45', 21),
 (111, '44', '46', 21),
 (112, '44', '47', 21),
-(115, '46', '34', 21);
+(116, '46', '34', 21),
+(117, '47', '48', 21),
+(118, '48', '34', 21);
 
 -- --------------------------------------------------------
 
@@ -150,7 +154,8 @@ INSERT INTO `tbltag` (`tag_id`, `tag_name`) VALUES
 (44, 'shoes'),
 (45, 'fashion'),
 (46, 'footwear'),
-(47, 'watch');
+(47, 'watch'),
+(48, 'watermark');
 
 -- --------------------------------------------------------
 
@@ -306,17 +311,17 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `tblproduct_tag`
 --
 ALTER TABLE `tblproduct_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 --
 -- AUTO_INCREMENT for table `tbltag`
 --
 ALTER TABLE `tbltag`
-  MODIFY `tag_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `tag_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
