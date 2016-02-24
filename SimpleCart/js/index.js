@@ -155,11 +155,14 @@ function renderItems(array) {
 	  array.map(function(product, index) {
     var item = '<div class="item-container col-md-6"> \
                   <div class="product-item col-md-12 text-center"> \
-    							<img class="img-responsive center-block product-image" src='+product.image_path+' > \
-  			  				<h3>'+ product.name+'</h3> \
-  			  				<h5>P '+ product.price+'.00</h5> \
-  			  				<h6>Qty: ' + product.quantity + '</h6> \
-  			  				<button class="btn btn-success add-cart" data-index='+index+' data-id='+product.id+'>Add to Cart </button> \
+    							  <img class="img-responsive center-block product-image" src='+product.image_path+' > \
+  			  				  <h3>'+ product.name+'</h3> \
+  			  				  <h5>P '+ product.price+'.00</h5> \
+  			  				  <h6>Qty: ' + product.quantity + '</h6> \
+                    <div class="action-buttons"> \
+                      <button type="button" class="btn btn-info center-block margin-bottom-10" data-toggle="modal" data-target="#myModal">item Details</button> \
+  			  				    <button class="btn btn-success add-cart center-block margin-bottom-10" data-index='+index+' data-id='+product.id+'>Add to Cart </button> \
+                    </div> \
                   </div> \
 			  				</div>';
   	$('#product-container').append(item);

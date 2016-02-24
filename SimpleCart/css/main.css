@@ -1,8 +1,18 @@
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
 .product-item {
   height: 350px;
   border: 1px solid rgba(128, 128, 128, 0.41);
   padding: 15px;
-  display: inline-block
+  display: inline-block;
+  position: relative;
+}
+
+.product-item:hover .action-buttons {
+  display: block;
+
 }
 
 .item-container {
@@ -38,4 +48,17 @@
 
 .actions {
 	display: 	none;
+}
+
+.action-buttons {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 45%;
+}
+
+#floating_button {
+  position: fixed;
+  right: 0;
+  top: 100px;
 }

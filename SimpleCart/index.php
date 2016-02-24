@@ -53,6 +53,8 @@ $conn->close();
 		</div>
 	</div>
 </div>
+
+
 <script type="text/javascript">
 	var products = JSON.parse('<?php echo $product_json; ?>');
 </script>
