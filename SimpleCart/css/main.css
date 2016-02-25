@@ -2,8 +2,27 @@
   margin-bottom: 10px;
 }
 
+.overlay {
+  position: absolute;
+  background: rgba(86, 82, 82, 0.4);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  transition: all 0.3s linear;
+}
+
+.search {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  height: 250px;
+}
+
 .product-item {
-  height: 350px;
+  height: 220px;
   border: 1px solid rgba(128, 128, 128, 0.41);
   padding: 15px;
   display: inline-block;
@@ -12,7 +31,10 @@
 
 .product-item:hover .action-buttons {
   display: block;
+}
 
+.product-item:hover .overlay {
+  opacity: 1;
 }
 
 .item-container {
@@ -55,10 +77,12 @@
   position: absolute;
   width: 100%;
   top: 45%;
+  z-index: 11;
 }
 
 #floating_button {
   position: fixed;
   right: 0;
   top: 100px;
+  z-index: 999;
 }
