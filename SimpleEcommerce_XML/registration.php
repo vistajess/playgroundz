@@ -37,10 +37,11 @@
 		}	else if ($captcha1 != $captcha2) {
 			$registerMessage = "The captcha code you entered is not correct.";
 			$_SESSION['registerMessage'] = $registerMessage;
-		} else if (mysqli_num_rows($result) > 0) {
-			$registerMessage = "The email you entered is already registered.";
-			$_SESSION['registerMessage'] = $registerMessage;
-		}
+		} 
+		// else if (mysqli_num_rows($result) > 0) {
+		// 	$registerMessage = "The email you entered is already registered.";
+		// 	$_SESSION['registerMessage'] = $registerMessage;
+		// }
 		
 		if(!isset($registerMessage)) {
 			mysqli_query($conn, "INSERT INTO tblUser (firstName, middleName, lastName, contactNo, email, userPass, userTypeID, userName, birthdate, address) 
