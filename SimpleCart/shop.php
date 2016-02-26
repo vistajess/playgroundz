@@ -14,6 +14,20 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
+
+// ===========================
+$sql = "SELECT * FROM tblcategory";
+$result = $conn->query($sql);
+$json_rows = array();
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+       $json_rows[] = $row;
+    }
+    $category_json = json_encode($json_rows);
+} else {
+    echo "0 results";
+}
+
 $userid = '';
 $username = '';
 $firstname = '';
@@ -54,23 +68,34 @@ $conn->close();
 
   <button id="floating_button" class="btn btn-info" data-toggle="modal" data-target="#shopModal">Floating Button</button>
 	<div class="row">
-		<div class="search col-md-3">
-			<div class="form-group">
-				<label>Search Item</label><br>
-				<input type="text" id="search_item" class="margin-bottom-10"><br>
-				<button id="search_btn" class="btn btn-info">Search</button>
-				<button id="show_all" class="btn btn-warning">Reset Search</button>
+		<div class="col-md-2">
+			<div class="search col-md-12">
+					<div class="form-group">
+						<label>Search Item</label><br>
+						<input type="text" id="search_item" class="margin-bottom-10" style="width:100%;"><br>
+						<button id="search_btn" class="btn btn-info">Search</button>
+						<button id="show_all" class="btn btn-warning">Reset Search</button>
+					</div>
+					<div class="form-group">
+						<label>Sort Items By</label>
+							<select id="sort_items">
+								<option value="id">ID</option>
+								<option value="name">Name</option>
+								<option value="price">Price</option>
+							</select>
+					</div>
+				 </div>
+					<div class="category col-md-12">
+						<div class="form-group">
+							<label>Categories</label>
+							<ul id="category_list">
+								
+							</ul>
+						</div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label>Sort Items By</label>
-					<select id="sort_items">
-						<option value="id">ID</option>
-						<option value="name">Name</option>
-						<option value="price">Price</option>
-					</select>
-			</div>
-		</div>
-		<div class="col-md-9">
+
+		<div class="col-md-10">
 			<h3>PRODUCT LIST</h3>
 			<div id="product-container">
 			</div>
@@ -125,7 +150,7 @@ $conn->close();
         <h4 class="modal-title">Product Details</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -181,6 +206,7 @@ $conn->close();
 </div>
 <script type="text/javascript">
 	var products = JSON.parse('<?php echo $product_json; ?>');
+	var categories = JSON.parse('<?php echo $category_json; ?>');
 	var user_info = {
 		"id" : '<?php echo $userid;?>',
 		"username" : '<?php echo $username;?>',

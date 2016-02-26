@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2016 at 12:44 PM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Generation Time: Feb 26, 2016 at 06:33 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,24 +26,50 @@ SET time_zone = "+00:00";
 -- Table structure for table `product_tbl`
 --
 
-CREATE TABLE IF NOT EXISTS `product_tbl` (
+CREATE TABLE `product_tbl` (
   `id` int(4) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(250) NOT NULL,
   `price` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
-  `image_path` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `image_path` varchar(250) NOT NULL,
+  `category_id` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product_tbl`
 --
 
-INSERT INTO `product_tbl` (`id`, `name`, `description`, `price`, `quantity`, `image_path`) VALUES
-(1, 'Iphone 6', 'Sample Description', 40000, 120, 'images/prod1.jpg'),
-(2, 'Power Bank', 'Power Bank', 250, 230, 'images/prod2.jpg'),
-(3, 'Bea Anne Cruz', 'Confident.overload()', 4500, 15, 'images/prod3.jpg'),
-(4, 'Laptop', 'Matibay na laptop, kahit basain mababasa pa rin', 25000, 20, 'images/prod4.jpg');
+INSERT INTO `product_tbl` (`id`, `name`, `description`, `price`, `quantity`, `image_path`, `category_id`) VALUES
+(1, 'Iphone 6', 'Sample Description', 40000, 120, 'images/prod1.jpg', '1'),
+(2, 'Power Bank', 'Power Bank', 250, 230, 'images/prod2.jpg', '1'),
+(3, 'Bea Anne Cruz', 'Confident.overload()', 4500, 15, 'images/prod3.jpg', '3'),
+(4, 'Laptop', 'Matibay na laptop, kahit basain mababasa pa rin', 25000, 20, 'images/prod4.jpg', '2'),
+(12, 'sample Item', 'description', 100, 20, 'images/prod4.jpg', '4'),
+(13, 'Item 13', 'wtf', 190, 20, 'images/prod2.jpg', '1'),
+(14, 'qweqwe', 'qweqwe', 20, 44, 'images/prod3.jpg', '2'),
+(15, 'Product ', 'description', 122, 42, 'images/prod1.jpg', '4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblcategory`
+--
+
+CREATE TABLE `tblcategory` (
+  `category_id` int(20) NOT NULL,
+  `category_name` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblcategory`
+--
+
+INSERT INTO `tblcategory` (`category_id`, `category_name`) VALUES
+(1, 'sample category 1'),
+(2, 'sample category 2'),
+(3, 'category 3'),
+(4, 'category 4');
 
 -- --------------------------------------------------------
 
@@ -51,7 +77,7 @@ INSERT INTO `product_tbl` (`id`, `name`, `description`, `price`, `quantity`, `im
 -- Table structure for table `tbluser`
 --
 
-CREATE TABLE IF NOT EXISTS `tbluser` (
+CREATE TABLE `tbluser` (
   `userID` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `userpass` varchar(20) NOT NULL,
@@ -63,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `tbluser` (
   `address` varchar(100) DEFAULT NULL,
   `userTypeID` int(11) NOT NULL,
   `birthdate` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluser`
@@ -88,10 +114,10 @@ INSERT INTO `tbluser` (`userID`, `username`, `userpass`, `firstName`, `middleNam
 -- Table structure for table `tbluser_type`
 --
 
-CREATE TABLE IF NOT EXISTS `tbluser_type` (
+CREATE TABLE `tbluser_type` (
   `userTypeID` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluser_type`
@@ -107,7 +133,7 @@ INSERT INTO `tbluser_type` (`userTypeID`, `type`) VALUES
 -- Table structure for table `tbl_order`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_order` (
+CREATE TABLE `tbl_order` (
   `id` int(11) NOT NULL,
   `order_id` varchar(50) NOT NULL,
   `user_id` varchar(10) NOT NULL,
@@ -117,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `subtotal` double(20,2) NOT NULL,
   `total` double(20,2) NOT NULL,
   `date_purchased` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_order`
@@ -175,6 +201,12 @@ ALTER TABLE `product_tbl`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tblcategory`
+--
+ALTER TABLE `tblcategory`
+  ADD PRIMARY KEY (`category_id`);
+
+--
 -- Indexes for table `tbluser`
 --
 ALTER TABLE `tbluser`
@@ -201,22 +233,27 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT for table `product_tbl`
 --
 ALTER TABLE `product_tbl`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `tblcategory`
+--
+ALTER TABLE `tblcategory`
+  MODIFY `category_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbluser_type`
 --
 ALTER TABLE `tbluser_type`
-  MODIFY `userTypeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `userTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

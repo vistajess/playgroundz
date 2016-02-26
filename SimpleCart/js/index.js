@@ -1,5 +1,6 @@
 
-	renderItems(products);
+  renderItems(products);
+	renderCategories(categories);
 
 	$('body').on('click', '.add-cart', function () {
 		var product_id = $(this).data('id');
@@ -10,6 +11,29 @@
     var product_id = $(this).data('id');
     var qty = $(this).data('qty');
     removeItem(product_id,parseInt(qty));
+  });
+
+  $('body').on('click', '.categories', function () {
+    var category_id = $(this).data('category_id');
+    var filterByCategory = products.filter(function(product, id) {
+      return product.category_id == category_id;
+    });
+    renderItems(filterByCategory);
+  });
+
+  $('body').on('click', '.item-detail', function () {
+    var obj = JSON.parse(decodeURIComponent($(this).data('product_object')));
+    var modal_body = $('#itemDetail .modal-body');
+    modal_body.html('');
+    var renderDetails = '<div class="text-center"> \
+                          <p><img class="img-responsive center-block product-image" src='+obj.image_path+' > </p>\
+                          <p>ID: '+obj.id+'</p>\
+                          <p>Name: '+obj.name+'</p>\
+                          <p>Price: '+obj.price+'</p>\
+                          <p>Price: '+obj.quantity+'</p>\
+                        </div>';
+    modal_body.append(renderDetails);
+    console.log(obj);
   });
 
   $('#search_btn').click(function (){
@@ -86,6 +110,9 @@
   var cartItems = [];
   var total = 0;
 
+
+
+
 // ========================== FUNCTIONS 
 function addToCart(product_id) {
   var item_qty = 1;
@@ -153,12 +180,12 @@ function removeItem(product_id,qty) {
 function renderItems(array) {
 	  $('#product-container').html('');
 	  array.map(function(product, index) {
-    var item = '<div class="item-container col-md-3"> \
+    var item = '<div class="item-container col-md-3 col-md-15"> \
                   <div class="product-item col-md-12 text-center"> \
                     <div class="overlay"></div> \
     							  <img class="img-responsive center-block product-image" src='+product.image_path+' > \
                     <div class="action-buttons"> \
-                      <button type="button" class="btn btn-info center-block margin-bottom-10" data-toggle="modal" data-target="#itemDetail">item Details</button> \
+                      <button type="button" data-product_object='+encodeURIComponent(JSON.stringify(product))+' class="btn btn-info center-block margin-bottom-10 item-detail" data-toggle="modal" data-target="#itemDetail">item Details</button> \
   			  				    <button class="btn btn-success add-cart center-block margin-bottom-10" data-index='+index+' data-id='+product.id+'>Add to Cart </button> \
                     </div> \
                   </div> \
@@ -191,9 +218,13 @@ function renderCartItems() {
     $('#cart-container').append(item);
   });
 
-  var getSubtotalsArray = cartItems.map(function(product,index) { return product.subtotal });
+  var getSubtotalsArray = cartItems.map(function(product,index) { return parseInt(product.subtotal) });
   total = getSubtotalsArray.reduce(function(a,b) { return a + b });
-  var template = '<div class="total text-right col-md-12">TOTAL:P'+total+'.00</div>';
+  var points = parseInt(total/100);
+  var template = '<div class="total text-right col-md-12"> \
+                  <p>Points : '+points+' </p>\
+                  <p> TOTAL:P'+total+'.00 </p> \
+                  </div>';
   $('#cart-container').append(template);
 };
 
@@ -208,3 +239,13 @@ function sortItems(property) {
         return result * sortOrder;
     }
 }
+
+function renderCategories(array) {
+    $('#category_list').html('');
+    array.map(function(category, index) {
+    var category = '<li> \
+                    <div data-category_id='+category.category_id+' class="categories">'+category.category_name+'</div>\
+                  </li>';
+    $('#category_list').append(category);
+  });
+};
