@@ -40,6 +40,7 @@ $('#register_order').click(function(e) {
       "firstname" : $('#registration input[name=firstname]').val(),
       "lastname" : $('#registration input[name=lastname]').val(),
       "address" : $('#registration input[name=address]').val(),
+      "contact" : $('#registration input[name=contact]').val(),
       "username" : $('#registration input[name=username]').val(),
       "password" : $('#registration input[name=password]').val(),
     },

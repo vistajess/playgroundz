@@ -180,6 +180,10 @@ $conn->close();
 	    			<label class="-display">Last Name</label>
 	    			<input required type="text" name="lastname">
 	    		</div>
+          <div>
+            <label class="-display">Contact</label>
+            <input required type="text" name="contact">
+          </div>
 	    		<div>
 	    			<label class="-display">Address</label>
 	    			<input required type="text" name="address">

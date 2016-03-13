@@ -25,8 +25,8 @@ function register_order() {
 	$user_id = $result[0];
 
   $usertypeid = 2;
-	$stmt = $conn->prepare("INSERT INTO tbluser (userTypeID,firstName,lastName,address,username,userpass) VALUES(?,?,?,?,?,?)");
-  $stmt->bind_param("ssssss",$usertypeid,$registration_data['firstname'],$registration_data['lastname'],$registration_data['address'],$registration_data['username'],$registration_data['password']);
+	$stmt = $conn->prepare("INSERT INTO tbluser (userTypeID,firstName,lastName,address,contactNo,username,userpass) VALUES(?,?,?,?,?,?,?)");
+  $stmt->bind_param("sssssss",$usertypeid,$registration_data['firstname'],$registration_data['lastname'],$registration_data['address'],$registration_data['contact'],$registration_data['username'],$registration_data['password']);
   $stmt->execute();
 
 
@@ -39,14 +39,19 @@ function register_order() {
   $cartItems = $_POST['cartItems'];
   $total = $_POST['total'];
   // $user_id = $next_id[0];
-  $sql = '';
+  $order_sql = '';
+  $transaction_sql = '';
 	foreach ($cartItems as &$cart) {
-	  $sql .= "INSERT INTO tbl_order (order_id,user_id,product_id,price,quantity,subtotal,total,date_purchased) 
+	  $order_sql .= "INSERT INTO tbl_order (order_id,user_id,product_id,price,quantity,subtotal,total,date_purchased) 
 	  				VALUES ('".$order_id."','".$user_id."','".$cart['id']."','".$cart['price']."','".$cart['quantity']."','".$cart['subtotal']."','".$total."','".$date_time."');";
 	  //SAVE EACH ITEMS IN THE ORDER TABLE
-	};
 
-	$conn->multi_query($sql);
+    $transaction_sql .= "INSERT INTO tbl_transaction (order_id,user_id,product_id,price,quantity,subtotal,total,date_purchased,address,contact) 
+        VALUES ('".$order_id."','".$user_id."','".$cart['id']."','".$cart['price']."','".$cart['quantity']."','".$cart['subtotal']."','".$total."','".$date_time."','".$registration_data['address']."','".$registration_data['contact']."');";        
+	};
+  $conn->multi_query($order_sql);
+  include('../config.php');
+	$conn->multi_query($transaction_sql);
 	$return = Array(
 		"next_id" => $next_id_sql,
 		"cartItems" => $cartItems,
@@ -54,7 +59,7 @@ function register_order() {
 		"date" => $date_time,
 		"sql" => $sql
 	);
-
+  
   echo json_encode($return);
 }
 
