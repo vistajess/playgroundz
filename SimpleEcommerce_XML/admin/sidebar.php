@@ -19,6 +19,9 @@
 			<a class="sidebar-links" href="transactions.php">Transactions</a>
 		</li>
 		<li>
+			<a class="sidebar-links" href="orders.php">Orders</a>
+		</li>
+		<li>
 			<a class="sidebar-links" href="logout.php">Logout</a>
 		</li>
 	</ul>
