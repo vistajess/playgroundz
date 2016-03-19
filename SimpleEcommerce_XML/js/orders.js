@@ -18,4 +18,38 @@ $(document).ready(function() {
     });
 
 
+ $(document.body).on('click','.apply-btn', function() {
+
+  var option_status = $(this).prev().val();
+  var id = $(this).data('order_id');
+  console.log(option_status);
+
+  var dataObj = {
+      "order_id" : id,
+      "status" : option_status,
+  };
+  console.log(dataObj);
+  // return;
+  $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: '../admin/modules/updateOrderAndTransactionStatus.php',
+      data: dataObj,
+      beforeSend: function(xhr) {
+        if(option_status === 'pending') {
+          xhr.abort();
+          console.log('abrt');
+        }
+      },
+      success: function(data) {
+        // console.log(data);
+        window.location.href = "../admin/orders.php";
+      },
+      error: function(xhr, status, error) {
+      }
+  });
+
+ });
+
+
 });
