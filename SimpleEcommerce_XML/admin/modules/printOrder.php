@@ -47,8 +47,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </thead>
       <tbody>
         <?php
-          while( $record = mysqli_fetch_array( $orders_result ) ) {
+          // while( $record = mysqli_fetch_array( $orders_result ) ) {
 
+            foreach($orders_result as $key=>$record) {
+              // do stuff
            ?>
           	<tr>
           		<td><?php echo $record['product_id'];?></td>
