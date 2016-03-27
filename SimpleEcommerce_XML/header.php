@@ -27,6 +27,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["user_id"])) { ?>
 				</ul>
 		</li>
 		<li> <a href="cart.php">Cart</a></li>
+		<li> <a href="myorders.php">My Orders</a></li>
 		<?php	if(isset($_SESSION["username"]) && isset($_SESSION["user_id"])) { ?>
 			<li> <a href="logout.php">Logout</a></li>
 		<?php } ?>

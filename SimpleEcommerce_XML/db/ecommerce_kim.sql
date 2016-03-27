@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2016 at 02:57 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.4
+-- Generation Time: Mar 27, 2016 at 06:11 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `ecommerce_kim`
@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `tblcategory`
 --
 
-CREATE TABLE `tblcategory` (
-  `category_id` int(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tblcategory` (
+`category_id` int(4) NOT NULL,
   `category_name` varchar(250) NOT NULL,
   `category_details` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblcategory`
@@ -48,15 +48,15 @@ INSERT INTO `tblcategory` (`category_id`, `category_name`, `category_details`) V
 -- Table structure for table `tblproduct`
 --
 
-CREATE TABLE `tblproduct` (
-  `product_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tblproduct` (
+`product_id` int(11) NOT NULL,
   `product_name` varchar(250) NOT NULL,
   `category_id` varchar(20) NOT NULL,
   `description` varchar(250) NOT NULL,
   `quantity` int(10) NOT NULL,
   `price` int(250) NOT NULL,
   `product_image` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblproduct`
@@ -64,7 +64,7 @@ CREATE TABLE `tblproduct` (
 
 INSERT INTO `tblproduct` (`product_id`, `product_name`, `category_id`, `description`, `quantity`, `price`, `product_image`) VALUES
 (37, 'Phone', '23', 'Phone na malupet', 2, 800, 'prod1.jpg'),
-(38, 'Cheese cake', '20', 'boom', 14, 800, 'header.png'),
+(38, 'Cheese cake', '20', 'boom', 13, 800, 'header.png'),
 (39, 'Pasta', '20', 'masarap na pasta', 20, 12, 'pasta.jpg'),
 (40, 'Burger', '20', 'burger na masarap', 39, 120, 'download.jpg'),
 (41, 'Go Pro', '23', 'gopro', 2, 5000, 'gopro.jpg'),
@@ -81,12 +81,12 @@ INSERT INTO `tblproduct` (`product_id`, `product_name`, `category_id`, `descript
 -- Table structure for table `tblproduct_tag`
 --
 
-CREATE TABLE `tblproduct_tag` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tblproduct_tag` (
+`id` int(11) NOT NULL,
   `product_id` varchar(300) NOT NULL,
   `tag_id` varchar(300) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblproduct_tag`
@@ -129,10 +129,10 @@ INSERT INTO `tblproduct_tag` (`id`, `product_id`, `tag_id`, `category_id`) VALUE
 -- Table structure for table `tbltag`
 --
 
-CREATE TABLE `tbltag` (
-  `tag_id` int(6) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbltag` (
+`tag_id` int(6) NOT NULL,
   `tag_name` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbltag`
@@ -161,8 +161,8 @@ INSERT INTO `tbltag` (`tag_id`, `tag_name`) VALUES
 -- Table structure for table `tbluser`
 --
 
-CREATE TABLE `tbluser` (
-  `userID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbluser` (
+`userID` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `userpass` varchar(20) NOT NULL,
   `firstName` varchar(40) NOT NULL,
@@ -173,7 +173,7 @@ CREATE TABLE `tbluser` (
   `address` varchar(100) DEFAULT NULL,
   `userTypeID` int(11) NOT NULL,
   `birthdate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluser`
@@ -198,10 +198,10 @@ INSERT INTO `tbluser` (`userID`, `username`, `userpass`, `firstName`, `middleNam
 -- Table structure for table `tbluser_type`
 --
 
-CREATE TABLE `tbluser_type` (
-  `user_type_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbluser_type` (
+`user_type_id` int(11) NOT NULL,
   `type_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbluser_type`
@@ -220,8 +220,8 @@ INSERT INTO `tbluser_type` (`user_type_id`, `type_name`) VALUES
 -- Table structure for table `tbl_orders`
 --
 
-CREATE TABLE `tbl_orders` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbl_orders` (
+`id` int(5) NOT NULL,
   `order_id` varchar(50) NOT NULL,
   `user_id` varchar(50) NOT NULL,
   `product_id` varchar(50) NOT NULL,
@@ -233,7 +233,7 @@ CREATE TABLE `tbl_orders` (
   `contact` varchar(250) NOT NULL,
   `date_purchased` datetime NOT NULL,
   `status` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_orders`
@@ -260,7 +260,8 @@ INSERT INTO `tbl_orders` (`id`, `order_id`, `user_id`, `product_id`, `price`, `q
 (63, '37', '10', '39', 12.00, 1, 12.00, 8132.00, 'asd', 'asd', '2016-03-19 14:31:39', 'pending'),
 (64, '37', '10', '40', 120.00, 1, 120.00, 8132.00, 'asd', 'asd', '2016-03-19 14:31:39', 'pending'),
 (65, '37', '10', '41', 5000.00, 1, 5000.00, 8132.00, 'asd', 'asd', '2016-03-19 14:31:39', 'pending'),
-(66, '37', '10', '42', 3000.00, 1, 3000.00, 8132.00, 'asd', 'asd', '2016-03-19 14:31:39', 'pending');
+(66, '37', '10', '42', 3000.00, 1, 3000.00, 8132.00, 'asd', 'asd', '2016-03-19 14:31:39', 'pending'),
+(67, '38', '13', '38', 800.00, 1, 800.00, 800.00, 'Shipping address', 'contact', '2016-03-27 06:05:01', 'pending');
 
 -- --------------------------------------------------------
 
@@ -268,8 +269,8 @@ INSERT INTO `tbl_orders` (`id`, `order_id`, `user_id`, `product_id`, `price`, `q
 -- Table structure for table `tbl_transaction`
 --
 
-CREATE TABLE `tbl_transaction` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbl_transaction` (
+`id` int(11) NOT NULL,
   `user_id` varchar(11) NOT NULL,
   `payment_method` varchar(200) NOT NULL,
   `transaction_id` varchar(100) NOT NULL,
@@ -278,7 +279,7 @@ CREATE TABLE `tbl_transaction` (
   `shipping_address` varchar(200) NOT NULL,
   `shipping_contact_number` varchar(200) NOT NULL,
   `status` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_transaction`
@@ -316,7 +317,8 @@ INSERT INTO `tbl_transaction` (`id`, `user_id`, `payment_method`, `transaction_i
 (34, '10', 'Cash On Delivery', '34', 12000.00, '2016-03-19 14:18:53', '', '', 'pending'),
 (35, '10', 'Cash On Delivery', '35', 6732.00, '2016-03-19 14:20:15', '5 Items', '5 Items', 'pending'),
 (36, '10', 'Cash On Delivery', '36', 5812.00, '2016-03-19 14:24:01', 'New', 'New', 'pending'),
-(37, '10', 'Cash On Delivery', '37', 8132.00, '2016-03-19 14:31:39', 'asd', 'asd', 'pending');
+(37, '10', 'Cash On Delivery', '37', 8132.00, '2016-03-19 14:31:39', 'asd', 'asd', 'pending'),
+(38, '13', 'Cash On Delivery', '38', 800.00, '2016-03-27 06:05:01', 'Shipping address', 'contact', 'pending');
 
 --
 -- Indexes for dumped tables
@@ -326,50 +328,49 @@ INSERT INTO `tbl_transaction` (`id`, `user_id`, `payment_method`, `transaction_i
 -- Indexes for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-  ADD PRIMARY KEY (`category_id`);
+ ADD PRIMARY KEY (`category_id`);
 
 --
 -- Indexes for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  ADD PRIMARY KEY (`product_id`);
+ ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `tblproduct_tag`
 --
 ALTER TABLE `tblproduct_tag`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbltag`
 --
 ALTER TABLE `tbltag`
-  ADD PRIMARY KEY (`tag_id`);
+ ADD PRIMARY KEY (`tag_id`);
 
 --
 -- Indexes for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  ADD PRIMARY KEY (`userID`),
-  ADD KEY `tblUser_userTypeID_FK` (`userTypeID`);
+ ADD PRIMARY KEY (`userID`), ADD KEY `tblUser_userTypeID_FK` (`userTypeID`);
 
 --
 -- Indexes for table `tbluser_type`
 --
 ALTER TABLE `tbluser_type`
-  ADD PRIMARY KEY (`user_type_id`);
+ ADD PRIMARY KEY (`user_type_id`);
 
 --
 -- Indexes for table `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -379,42 +380,42 @@ ALTER TABLE `tbl_transaction`
 -- AUTO_INCREMENT for table `tblcategory`
 --
 ALTER TABLE `tblcategory`
-  MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `tblproduct_tag`
 --
 ALTER TABLE `tblproduct_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=119;
 --
 -- AUTO_INCREMENT for table `tbltag`
 --
 ALTER TABLE `tbltag`
-  MODIFY `tag_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+MODIFY `tag_id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbluser_type`
 --
 ALTER TABLE `tbluser_type`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
