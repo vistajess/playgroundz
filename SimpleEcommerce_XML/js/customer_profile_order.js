@@ -3,7 +3,7 @@ $(document).ready(function() {
           "processing": true,
           "serverSide": true,
           "ajax":{
-            url :"../admin/modules/getOrders.php", // json datasource
+            url :"modules/getOrders.php?user_id="+user_id, // json datasource
             type: "post",  // method  , by default get,
             // success: function(data) {
             //  console.log(data);

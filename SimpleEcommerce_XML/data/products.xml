@@ -1,15 +1,6 @@
 <?xml version="1.0"?>
 <products>
   <product>
-    <id>36</id>
-    <name>Laptop1</name>
-    <description>Wtf11</description>
-    <quantity>235</quantity>
-    <price>12000</price>
-    <image>9aa26bea84ce93ef0c0f6744f0db414a.jpg</image>
-    <category>23</category>
-  </product>
-  <product>
     <id>37</id>
     <name>Phone</name>
     <description>Phone na malupet</description>

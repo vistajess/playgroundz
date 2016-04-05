@@ -8,8 +8,8 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 	$order_id = $_GET['id'];
 	$query = "SELECT * FROM tbl_orders left join tblproduct on tbl_orders.product_id = tblproduct.product_id WHERE order_id = ".$order_id."";
-	$result = mysqli_query($conn, $query);
-	$row = mysqli_fetch_assoc($result);
+	$orders_result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_assoc($orders_result);
 
 	$user_query = "SELECT * FROM tbluser WHERE userID='".$row['user_id']."'";
 	$user_result = mysqli_query($conn, $user_query);
@@ -29,7 +29,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <div>
 	<h2 class="text-center">Order Reports</h2>
 	<h4>Details</h4>
-	<p>Order Number: <?php echo $row['id'];?></p>
+  <p>Order Number: <?php echo $row['id'];?></p>
+	<p>Order Status: <?php echo $row['status'];?></p>
 	<p>Date Ordered: <?php echo $row['date_purchased'];?></p><br/>
 	<p>Name: <?php echo $user['firstName']." ".$user['lastName'];?></p>
 	<p>Contact: <?php echo $row['contact'];?></p>
@@ -46,7 +47,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </thead>
       <tbody>
         <?php
-          while( $record = mysqli_fetch_array( $result ) ){ ?>
+          // while( $record = mysqli_fetch_array( $orders_result ) ) {
+
+            foreach($orders_result as $key=>$record) {
+              // do stuff
+           ?>
           	<tr>
           		<td><?php echo $record['product_id'];?></td>
           		<td><?php echo $record['product_name'];?></td>

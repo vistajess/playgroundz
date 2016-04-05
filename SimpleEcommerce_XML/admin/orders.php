@@ -22,6 +22,7 @@ include('header.php');
             <th>Amount</th>
             <th>Contact Number</th>
             <th> Address </th>
+            <th> Status </th>
             <th> Print </th>
           </tr>
         </thead>

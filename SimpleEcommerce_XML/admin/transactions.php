@@ -14,6 +14,14 @@ include('header.php');
 <div class="container">
     <div class="admin-content">
       <h2>Transaction List <a class="custom-btn" href="generateTransactionReport.php">Generate Report</a></h2>
+      
+      <label>Filter by Status</label>
+      <select id="transaction_status">
+        <option value="all">All</option>
+        <option value="paid">Paid</option>
+        <option value="delivered">Delivered</option>
+        <option value="cancelled">Cancelled</option>
+      </select><br><br>
       <table id="dataTableTransaction"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
         <thead>
           <tr>
@@ -22,6 +30,7 @@ include('header.php');
             <th>Payment Method</th>
             <th>Transaction Number</th>
             <th>Amount</th>
+            <th>Status</th>
           </tr>
         </thead>
       </table>

@@ -150,6 +150,23 @@ a {
     float: right;
 }
 
+
+.apply-btn {
+  background: #999;
+  color: #fff;
+  padding: 1px;
+  display: block;
+  margin: 5px auto;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s linear;
+  border-radius: 5px;
+  width: 115px;
+  font-size: 15px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
 /* =======================SKELETON================================= */
 html,
 body {

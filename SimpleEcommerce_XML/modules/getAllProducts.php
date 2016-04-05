@@ -39,6 +39,14 @@ $query=mysqli_query($conn, $sql) or die("getProducts.php: get products");
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
+	if($row['quantity'] <= 0) {
+		$label = 'Out of stock';
+		$disabled = 'disabled-btn';
+	} else {
+		$label = 'View Product';
+		$disabled = '';
+	}
+
 	$nestedData=array(); 
 
 	$nestedData[] = '<input type="hidden" class="product_id" data-product_id="'.$row["product_id"].'">';
@@ -46,11 +54,11 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	$nestedData[] = '<h6 class="product-name">Product Name: ' . $row["product_name"] . '</h6>';
 	$nestedData[] = '<h6 class="product-price">Price : ' . $row["price"] . '</h6>';
 	$nestedData[] = '<h6 class="product-quantity">Quantity : ' . $row["quantity"] . '</h6>';
-	$nestedData[] = "<a id='' class='view-product' href='product_view.php?product_id=".$row["product_id"]."' data-product_id='".$row["product_id"]."'
+	$nestedData[] = "<a id='' class='view-product ".$disabled."' href='product_view.php?product_id=".$row["product_id"]."' data-product_id='".$row["product_id"]."'
 									data-product_name='".$row["product_name"]."' 
 									data-product_image='".$row["product_image"]."' 
 									data-quantity='".$row["quantity"]."' 
-									data-price='".$row["price"]."'>View Product</a>";
+									data-price='".$row["price"]."'>".$label."</a>";
 $nestedData[] = '<span class="cart-indicator">Added to cart</span>';				
 	
 	$data[] = $nestedData;
