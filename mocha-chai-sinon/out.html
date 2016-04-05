@@ -1,0 +1,28 @@
+    <section class="suite">
+      <h1>Sanitize</h1>
+      <dl>
+before
+        <dt>returns a lower string</dt>
+        <dd><pre><code>var inputWord = 'HELLO WORLD';
+	var outputWord = word.sanitize(inputWord);
+	expect(outputWord).to.equal('hello world');
+	expect(outputWord).to.not.equal('HELLO WORLD');
+	expect(outputWord).to.be.a('string');
+	expect(outputWord).to.not.be.a('number');
+	expect(outputWord).to.contain('hello');</code></pre></dd>
+before
+        <dt>remove any hyphen</dt>
+        <dd><pre><code>var inputWord = 'HELLO-WORLD';
+	var outputWord = word.sanitize(inputWord);
+	expect(outputWord).to.equal('hello world');</code></pre></dd>
+      </dl>
+    </section>
+    <section class="suite">
+      <h1>FindLength</h1>
+      <dl>
+        <dt>should return the array length</dt>
+        <dd><pre><code>var arr1 = [1,2,3,4,5,6];
+var arrLength = length.findLength(arr1);
+expect(arrLength).to.be.equal(6);</code></pre></dd>
+      </dl>
+    </section>
