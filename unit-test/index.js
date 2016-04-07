@@ -43,6 +43,6 @@ describe('String Reverse',function() {
 
   it('should return the length', function() {
     var item = ['item1','item2','item3','item4'];
-    chai.expect(length(item)).to.equal(item.length);
+    chai.expect(item.length).to.equal(item.length);
   });
 });
