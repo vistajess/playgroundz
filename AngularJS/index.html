@@ -3,14 +3,21 @@
 <head>
 	<title>Angular JS</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		<input type="text" ng-model="task"/>
-		{{ task }}
-
-
+	<h2 class="text-center">Sample Todo Application</h2>
+	<div class="row" ng-controller="TodoCtrl">
+		<div class="text-center">
+			<input type="text" ng-model="task" class="text-center"/>
+			<button ng-click="addItem(task)">Add Item</button>
+			<br><br>
+			<ul class="todo-list">
+				<li ng-repeat="todo in todoList track by $index">{{todo}} <button ng-click="removeItem(todo)">x</button></li>	
+			</ul>
+			<custom-directive></custom-directive>
+		</div>
 	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>

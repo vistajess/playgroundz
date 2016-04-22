@@ -1,0 +1,157 @@
+#content{background:#1D1D1D; min-width:1030px}
+.g_top{width:100%; height:429px; min-width:1030px; max-width:1920px; margin:0px auto; position:relative;}
+.gt_binner{width:100%; height:359px; position: relative;}
+.gt_img{width:100%; height: 100%; position: absolute; background-position:  center; opacity: 0;  filter:alpha(opacity=0);}
+
+.gt_ad{width:100%; height:334px; position:absolute; left:0px; top:0px; overflow:hidden;}
+.gt_ad_title{width:480px; height:110px; margin:10px auto 0px; background:url(../imgs/games_img.png?0804) no-repeat -250px -10px;}
+.gt_ad_img2{width:370px; height:198px; margin:15px auto 0px; background:url(../imgs/games_ad2.png) no-repeat; display:block; cursor:pointer;}
+.gt_swf{width:100%; height: 359px; position: absolute; top: 0px; left: 0px;}
+.gt_bnctrl{width:40px; min-height:40px; overflow: hidden; position: absolute; top:10px; right:8%; z-index: 2;}
+.gt_icon{width:40px; height: 40px; margin-bottom: 20px; cursor:pointer;}
+.gt_ad_btn3{width:315px; height: 36px; position: absolute; top: 260px; left: 50%; margin-left: -435px; display: none;}
+.gt_ad_btn1{width:145px; height: 36px; position: absolute; top: 220px; left: 50%; display: none;}
+.gt_ad_btn2{width:145px; height: 36px; position: absolute; top: 300px; left: 66%; margin-left: -340px; display: none;}
+.gt_ad_btn4{width:145px; height: 36px; position: absolute; top: 310px; left: 63%; margin-left: -335px; display: none;}
+.gt_ad_btn5{width:145px; height: 36px; position: absolute; top: 310px; left: 67%; margin-left: -415px; display: none;}
+
+.gt_menu{width:100%; height:70px; position:relative; background:#1D1D1D;}
+.gt_menu_bg{width:100%; height:20px; background:url(../imgs/games_img.png?0804) repeat-x 0 -160px; position:absolute; left:0px; top:0px;}
+.gt_menu_front{width:1030px; height:70px; margin:0 auto; background:url(../imgs/games_img.png?0804) no-repeat 0px -190px; position:relative; overflow:hidden;}
+.gt_menu_tools{width:100%; height:50px; margin-top:20px;}
+.gt_memu_hot{width:103px; height:100%; float:left;}
+.gt_mh_txt{width:34px; height:36px; line-height:18px; *line-height:20px; font-size:16px; color:#101010; margin-top:9px; margin-left:35px}
+.gt_menu_item{width:105px; height:50px; float:left; background:url(../imgs/games_img.png?0804) no-repeat -120px 0;}
+.gt_menu_item:hover{ background-position: -120px -70px; cursor:pointer;}
+.gt_all_jack{width:345px; height: 50px; margin-right: 20px; float: right;}
+.gt_all_jack .name{width:85px; height: 50px; font-size: 20px; color: #000000; line-height: 50px; line-height: 52px; text-align: center; float:left;}
+
+.g_center{width:1030px; height:625px; margin:0 auto 0px; background:#faf7f7; overflow:hidden;}
+.g_hots{width:1010px; height:600px; margin-top:10px; margin-left:20px;}
+
+.g_game{width:157px; height:150px; margin-right:10px; float:left;position: relative;}
+.g_big{width:324px; height:300px;}
+.g_picture{width:157px; height:110px; background:#b0b0b0; overflow:hidden; position:relative;}
+.g_picture:hover{cursor:pointer; background:#0088ff;}
+.g_big .g_picture{width:324px; height:260px; }
+.g_p_bg{width:155px; height:108px; margin:1px; background:#ffffff; overflow:hidden;}
+.g_picture:hover .g_p_bg{ background:#0088ff;}
+.g_big .g_p_bg{width:322px; height:258px;}
+.g_name{width:100%; height:40px; line-height:35px; *line-height:37; font-size:14px; text-align:center; color:#101010;position: relative;}
+.g_game:hover .g_name{color:#0088ff;}
+.g_name span{cursor:pointer;}
+.g_img{width:153px; height:106px; margin:1px;}
+.g_big .g_img{width:320px; height:256px;}
+.g_movie{width:62px; height:62px; position:absolute; right:0px; top:0px; background:url(../imgs/games_img.png?0804) no-repeat;}
+.g_hd{width:39px; height:39px; position:absolute; right:0px; top:0px; background:url(../imgs/games_img.png?0804) no-repeat -70px 0;}
+.g_p_style{width:90%; height:17px; position:absolute; right:4px; bottom:4px;}
+.g_auto, .g_anime, .g_girl{width: 30px; height:17px; margin-left:4px; float:right;}
+.g_auto{background:url(../imgs/games_img.png?0804) no-repeat 0px -110px;}
+.g_anime{background:url(../imgs/games_img.png?0804) no-repeat 0px -90px;}
+.g_girl{background:url(../imgs/games_img.png?0804) no-repeat 0px -70px;}
+
+.g_item{width:153px; height:182px; margin-right:15px; margin-bottom: 20px; float:left; position: relative; cursor: pointer;}
+.g_item:hover .gi_bg{ display: block;}
+.g_big{width:321px; height: 384px;}
+.gbi_top{width:100%; height: 310px; position: relative; overflow: hidden;}
+.gbi_btm{width:100%; height: 74px; position: relative;}
+.gbit_bg{width:963px; height: 310px; position: absolute; top: 0px; left: 0px;}
+.gbit_ad{width:321px; height: 100%; float: left; position: relative; display: block;}
+.gbit_ad img{width:321px; height: 100%;}
+.gbit_lb{width:100%; height: 56px; position: absolute; bottom: 0px; left: 0px;}
+.gbit_lb_bg{width:100%; height: 100%; background: #000000; opacity: 0.75; position: absolute; top: 0px; left: 0px; filter:alpha(opacity=75);}
+.gbit_name{width:173px; height: 56px; margin-left: 12px; font-size: 16px; color: #ffffff; line-height: 56px; *line-height: 58px; position: relative; z-index: 2; float: left;}
+.gbit_jack{width:135px; height: 56px; float: left;  position: relative; z-index: 2;}
+.gbit_jack_t{width:134px; height:28px; font-size: 12px; line-height:28px; *line-height: 30px; color: #ffffff; margin-left: 1px;}
+.gbib_tips{width:301px; height: 40px; font-size: 14px; line-height: 20px; *line-height: 22px; position: absolute; left: 10px; top: 12px; color:#000; display: none; text-decoration: none;}
+.gbit_cg{min-width:22px; height:12px; position: absolute; left: 14px; top: 17px;}
+.gbit_cgi{width:12px; height: 12px; margin-right: 10px; background: url(../imgs/games_img.png?0804) no-repeat -250px -12px; float: left;}
+.gbit_cgi:hover{ background-position: -250px -24px; cursor:pointer;}
+.gbit_cg .c, .gbit_cg .c:hover{ background-position: -250px 0px;}
+
+
+.gi_bg{width:151px; height: 180px; position: absolute; left: 0px; top: 0px; border: 1px solid #dddddd; display: none;}
+.gi_top{width:153px; height: 106px; position: relative;}
+.gi_btm{width:151px; height: 75px; position: relative; margin: 0 1px;}
+.gi_img, .gi_img img{width:153px; height: 106px; position: absolute; left: 0px; top: 0px;}
+.gi_b_df{width:100%; height: 100%; position: absolute; left: 0px; top: 0px; overflow: hidden;}
+.gi_b_nj, .gi_b_play, .gi_b_jp{width:100%; height: 100%; position: absolute; left: 0px; top: 0px; overflow: hidden;}
+.gi_b_play{display: none; opacity: 0; filter:alpha(opacity=0);}
+.gi_b_nj{text-align: center; line-height: 75px; *line-height: 77px; color:#101010; font-size: 14px;}
+.gi_b_play .name{width:151px; height: 38px; font-size: 14px; color:#101010; text-align: center; line-height: 38px; *line-height: 40px;}
+.start{width:95px; height: 25px; /*margin-left: 11px;*/ margin-left: 30px; float: left; font-size: 12px; text-align: center; color: #ffffff; line-height: 25px; *line-height: 27px; background: url(../imgs/games_img.png?0804) no-repeat -730px 0px;}
+.start:hover{background-position: -730px -30px; cursor: pointer;}
+.favo{width:29px; height: 25px; margin-left: 5px; float: left; background: url(../imgs/games_img.png?0804) no-repeat -830px 0px;}
+.favo:hover{background-position: -830px -30px; cursor: pointer;}
+.gi_b_jp .jack{width:100%; height: 25px; font-size: 12px; line-height: 25px; *line-height: 27px; color:#666666; text-align: center;}
+.gi_b_jp .name{width:151px; height: 24px; font-size: 14px; color:#101010; text-align: center; line-height: 24px; *line-height: 26px;}
+.money{/*width:125px;*/ width:141px; height:22px;}
+.gi_b_jp .money{ margin: 0px auto;}
+.gt_all_jack .money{ margin-top: 10px}
+.b_blue{width:260px; height: 32px; float: left;}
+.blue .num{min-width:12px; height: 22px; position: relative; float: left;}
+.b_blue .num{min-width:12px; height: 32px; position: relative; float: left; margin-left: 1px;}
+.blue .comma{width:3px;height: 22px; font-size: 12px; line-height: 22px; *line-height: 24px; color: #000000; float: left; display: block;}
+.b_blue .comma{width:6px;height: 32px; font-size: 20px; line-height: 40px; *line-height: 42px; font-weight: bold; color: #000000; float: left; display: block;}
+.blue .num .left, .blue .num .center, .blue .num .right{background:url(../imgs/n_s_blue.png) no-repeat; float: left; position: relative; z-index: 2;}
+.b_blue .num .left, .b_blue .num .center, .b_blue .num .right{background:url(../imgs/n_b.png) no-repeat; float: left; position: relative; z-index: 2;}
+.blue .num .left{width: 4px; height: 22px; float:left; background-position: 0px 0px;}
+.b_blue .num .left{width: 4px; height: 32px; float:left; background-position: 0px 0px;}
+.blue .num .center{/*width:6px; */ width: 8px; height: 22px; float:left; background-position: 0px -30px; background-repeat: repeat-x;}
+.b_blue .num .center{width:14px; height: 32px; float:left; background-position: 0px -40px; background-repeat: repeat-x;}
+.blue .num .right{width: 3px; height: 22px; float:left; background-position: 0px -60px;}
+.b_blue .num .right{width: 3px; height: 32px; float:left; background-position: 0px -80px;}
+.blue .num .txt{width:8px; height: 19px; position: absolute; /*left: 2px;*/ left: 4px; top: 1px; background: #FFB200; color: #ffffff; font-size: 12px; font-weight: bold; text-align: center; line-height: 17px; *line-height:19px;}
+.b_blue .num .txt{width:16px; height: 29px; position: absolute; left: 2px; top: 1px; background: #FFB200; color: #ffffff; font-size: 20px; font-weight: bold; text-align: center; line-height: 27px; *line-height:29px;}
+
+.g_all{width:1030px; min-height:350px; padding-bottom:20px; margin:0 auto; overflow:hidden; background:#faf7f7; margin-bottom:20px; padding-bottom: 160px;}
+.g_classify{width:100%; height:60px; background:#faf7f7;}
+.g_type{width:100%; height:65px; background:url(../imgs/games_img.png?0804) no-repeat 0 -261px; overflow:hidden;}
+.g_type_txt{width:100%; height:50px; margin-top:15px; overflow:hidden; color:#101010;}
+.g_gemeType{width:83px; height:50px; padding-right:20px; line-height:50px; *line-height:52px; font-size:12px; text-align:center; float:left; text-align:right;}
+.g_tp_item{ height:18px;padding:0 8px; margin:16px 10px 0px; line-height:18px; *line-height:20px; float:left; cursor:pointer;}
+.g_icon{width:7px; height:4px; background:url(../imgs/arrow_b.png) no-repeat; float:right; margin-top:7px; margin-left:6px;}
+.g_minbet, .g_lines{width:100%; height:18px; margin-bottom:12px; color:#696969;}
+.g_minbet_txt, .g_lines_txt{width:83px; height:18px; padding-right:20px; line-height:18px; *line-height:20px; font-size:12px; text-align:center; float:left; text-align:right;}
+.g_cdt_item{ height:18px;padding:0 8px; margin:0px 10px; line-height:18px; *line-height:20px; float:left; vertical-align:top; cursor:pointer;}
+.g_cdt_item input{ margin-top:4px; margin-right:4px;}
+.g_style, .g_diff{width:100%; height:18px; margin-bottom:12px; color:#101010;}
+.t_slt{color:#ffffff; background:#FFB200;}
+.t_slt .g_icon{ background:url(../imgs/arrow_w.png) no-repeat;}
+.g_game_list{width:1002px; min-height:150px; margin-top:10px; margin-left:-5px;}
+.gt_download{width:140px; height:334px; position:fixed; top:480px; display:none; z-index:10;}
+.ued_dld, .pt_dld{width:140px; height: 157px; background: url(../imgs/download_ico.png?0804) no-repeat; display: block;}
+.ued_dld{background-position: 0 0;}
+.ued_dld:hover{background-position: 0px -157px; cursor:pointer;}
+.pt_dld{background-position: -140px 0; margin-top: 20px;}
+.pt_dld:hover{background-position: -140px -157px; cursor:pointer;}
+.gt_cs{width:89px; height:114px; position:fixed; top:498px; display:none; z-index:10;  overflow: hidden; }
+.gt_qq{width:100%; height: 12px; line-height: 12px; *line-height: 14px; text-align: center; margin-top: 84px; color:#ffffff;}
+.gt_prize{width:220px; min-height: 24px; position:fixed; bottom:20px; display:none; z-index:100021; overflow: hidden;}
+.gtp_close{width:100%; height: 24px; background: #3ab280; color:#7eedbf; text-align: center; line-height: 24px; *line-height: 26px; font-size: 12px; cursor: pointer; border-radius:2px;}
+.gtp_list{width:100%; overflow:hidden;}
+.gtp_dt{width:100%; /*height:80px;*/ height: 0px; margin-bottom: 5px; border-radius:2px; overflow: hidden; position: relative; opacity: 0; filter: alpha(opacity=0);}
+.gtp_dt .bg{width:100%; height: 100%; position: absolute; top: 0px; left: 0px; opacity: 0.9; filter:alpha(opacity=90);}
+.green .bg{background:#3ab280;}
+.red .bg{background:#ff008a;}
+.gtp_dt .txt{width: 190px; height: 60px; margin:10px auto; line-height: 20px; *line-height: 22px; font-size: 12px; position: relative;}
+.green .txt{color:#7eedbf; }
+.red .txt{color:#ffbfe2; }
+.gtp_dt span{margin-right: 7px;}
+.gtp_dt .white, .gtp_dt .num{color:#ffffff;}
+.gtp_dt .num{ font-size: 16px;}
+.gtp_dt .cls{width: 20px; height: 20px; font-size: 12px; line-height:20px; *line-height: 22px; text-align: center; color:#ffffff; position: absolute; top: 0px; right: -7px; cursor: pointer;}
+.hidd_scroll{width:0px; height: 0px; overflow: hidden;}
+.hs_obj{width:10px; height: 10px; overflow: scroll;}
+.hs_obj div{width:10px; height: 999999999px;}
+.g_enter{float:left;}
+.dl_btn{width:150px; height:36px; line-height:36px; *line-height:38px; font-size:14px;color:#ffffff; text-align:center; float:right; display:block; background:url(../imgs/btn_download.png) no-repeat;}
+.dl_btn:hover{ background-position:0 -40px;}
+.g_img, .gi_img img {opacity: 0;transition: opacity .3s ease-in;}
+
+.g_subcategory { margin-top: 15px; }
+.subcategory-list { display: none; }
+.subcategory-list button { margin-top: 10px; }
+.heartless { background: url('../icon/xin_hui.png');cursor:pointer;display: inline-block;height: 30px;width: 30px;position: absolute;right: 0;bottom: 5px;}
+.heartless.heartful { background: url('../icon/xin_hong.png') !important;}
+#search_game { float: right;width: 130px;height: 26px;margin-left: 5px;}
